@@ -69,6 +69,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\LoadGameMenu.xaml.vb">
+      <DependentUpon>LoadGameMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuViewModelBase.vb" />
+    <Compile Include="ViewModels\LoadGameMenuViewModel.vb" />
+    <Compile Include="ViewModels\MainMenuViewModel.vb" />
+    <Compile Include="ViewModels\MainViewModel.vb" />
+    <Page Include="Controls\LoadGameMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,12 +92,16 @@
       <DependentUpon>Application.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\MainMenu.xaml.vb">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.vb">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Import Include="FeneMonLib" />
     <Import Include="System.Threading.Tasks" />
     <Import Include="System.Linq" />
     <Import Include="System.Xml.Linq" />
@@ -133,9 +152,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controls\" />
-    <Folder Include="Views\" />
+    <ProjectReference Include="..\..\FeneMonLib\FeneMonLib.vbproj">
+      <Project>{07324c90-8343-4329-9aec-eed7ddb890d6}</Project>
+      <Name>FeneMonLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

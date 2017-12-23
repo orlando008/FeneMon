@@ -5,8 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FeneMonManagerWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        WindowState="Maximized"
+        Title="FeneMon Gym Manager">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#FF0B007E" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:MainMenuViewModel}">
+            <local:MainMenu></local:MainMenu>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:LoadGameMenuViewModel}">
+            <local:LoadGameMenu></local:LoadGameMenu>
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel LastChildFill="True">
+        <ContentControl x:Name="ContentArea" Content="{Binding CurrentPageViewModel}"></ContentControl>
+    </DockPanel>
 </Window>

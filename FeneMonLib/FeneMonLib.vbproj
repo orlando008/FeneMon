@@ -43,6 +43,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -87,6 +88,8 @@
     <Compile Include="GameObjects\GymZone.vb" />
     <Compile Include="GameObjects\World.vb" />
     <Compile Include="GameObjects\WorldZone.vb" />
+    <Compile Include="Shared\RelayCommand.vb" />
+    <Compile Include="Shared\ViewModelBase.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
