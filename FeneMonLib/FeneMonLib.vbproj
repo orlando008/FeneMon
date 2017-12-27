@@ -88,6 +88,7 @@
     <Compile Include="GameObjects\GymZone.vb" />
     <Compile Include="GameObjects\World.vb" />
     <Compile Include="GameObjects\WorldZone.vb" />
+    <Compile Include="Shared\Enumerations.vb" />
     <Compile Include="Shared\RelayCommand.vb" />
     <Compile Include="Shared\ViewModelBase.vb" />
   </ItemGroup>
