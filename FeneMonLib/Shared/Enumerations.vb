@@ -22,4 +22,9 @@
         Rock
         Water
     End Enum
+
+    Public Enum DamageTypeEnum
+        Physical
+        Special
+    End Enum
 End Class

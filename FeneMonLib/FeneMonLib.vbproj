@@ -64,6 +64,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameObjects\FeneMonMove.vb" />
     <Compile Include="Methods\BattleMethods.vb" />
     <Compile Include="GameObjects\FeneMon.vb" />
     <Compile Include="GameObjects\Fighter.vb" />
