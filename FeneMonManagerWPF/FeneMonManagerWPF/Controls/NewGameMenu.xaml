@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="MainMenu"
+﻿<UserControl x:Class="NewGameMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,7 @@
              xmlns:local="clr-namespace:FeneMonManagerWPF"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Orientation="Vertical">
-        <Button Command="{Binding NewGameCommand}">New Game</Button>
-        <Button Command="{Binding LoadGameCommand}">Load Game</Button>
-    </StackPanel>
+    <Grid>
+        <Label Foreground="White" FontSize="25">Starting a new game...</Label>
+    </Grid>
 </UserControl>

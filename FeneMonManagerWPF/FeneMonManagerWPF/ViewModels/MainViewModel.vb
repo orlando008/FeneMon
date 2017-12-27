@@ -22,6 +22,9 @@ Public Class MainViewModel
         _pageViewModels = New Dictionary(Of Enumerations.PageEnum, MenuViewModelBase)()
         _pageViewModels.Add(Enumerations.PageEnum.MainMenu, New MainMenuViewModel())
         _pageViewModels.Add(Enumerations.PageEnum.LoadGame, New LoadGameMenuViewModel())
+        _pageViewModels.Add(Enumerations.PageEnum.NewGame, New NewGameMenuViewModel())
+
+        WireUpPageViewModelEvents()
 
         PageViewModelNavigate(Enumerations.PageEnum.MainMenu)
     End Sub
@@ -41,26 +44,4 @@ Public Class MainViewModel
     Private Sub PageViewModelNavigate(page As Enumerations.PageEnum)
         CurrentPageViewModel = _pageViewModels(page)
     End Sub
-
-#Region "Load Game Command"
-
-    Private _LoadGameCommand As RelayCommand
-
-    Public ReadOnly Property LoadGameCommand() As ICommand
-        Get
-            If _LoadGameCommand Is Nothing Then
-                _LoadGameCommand = New RelayCommand(New Action(Of Object)(AddressOf LoadGame), New Predicate(Of Object)(AddressOf CanLoadGame))
-            End If
-            Return _LoadGameCommand
-        End Get
-    End Property
-
-    Private Function CanLoadGame() As Boolean
-        Return True
-    End Function
-
-    Private Sub LoadGame()
-        CurrentPageViewModel = _pageViewModels(Enumerations.PageEnum.LoadGame)
-    End Sub
-#End Region
 End Class

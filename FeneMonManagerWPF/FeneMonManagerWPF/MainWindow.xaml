@@ -20,8 +20,30 @@
         <DataTemplate DataType="{x:Type local:LoadGameMenuViewModel}">
             <local:LoadGameMenu></local:LoadGameMenu>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:NewGameMenuViewModel}">
+            <local:NewGameMenu></local:NewGameMenu>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="System">
+                <MenuItem Header="New Game"></MenuItem>
+                <MenuItem Header="Load Game"></MenuItem>
+                <MenuItem Header="Save Game"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Exit"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Game">
+                <MenuItem Header="World Map"></MenuItem>
+                <MenuItem Header="Gym"></MenuItem>
+                <MenuItem Header="Fighter"></MenuItem>
+                <MenuItem Header="Mon"></MenuItem>
+            </MenuItem>
+            
+            <MenuItem Header="_About">
+                
+            </MenuItem>
+        </Menu>
         <ContentControl x:Name="ContentArea" Content="{Binding CurrentPageViewModel}"></ContentControl>
     </DockPanel>
 </Window>

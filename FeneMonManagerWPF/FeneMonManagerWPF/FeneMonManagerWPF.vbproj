@@ -72,15 +72,23 @@
     <Compile Include="Controls\LoadGameMenu.xaml.vb">
       <DependentUpon>LoadGameMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\NewGameMenu.xaml.vb">
+      <DependentUpon>NewGameMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuViewModelBase.vb" />
     <Compile Include="ViewModels\LoadGameMenuViewModel.vb" />
     <Compile Include="ViewModels\MainMenuViewModel.vb" />
     <Compile Include="ViewModels\MainViewModel.vb" />
+    <Compile Include="ViewModels\NewGameMenuViewModel.vb" />
     <Page Include="Controls\LoadGameMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NewGameMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
