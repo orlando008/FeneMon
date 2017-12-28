@@ -11,6 +11,7 @@
         If numGymZones <= 0 Then
             Throw New Exception("The number of Gym Zones in a Gym must be greater than or equal to one.")
         End If
+        _gymZones = New List(Of GymZone)
 
         For i = 0 To numGymZones
             If i = 0 Then

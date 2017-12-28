@@ -6,6 +6,8 @@
     ''' Generate a new FeneMon world.
     ''' </summary>
     Public Sub New()
+        _worldZones = New List(Of WorldZone)
+
         'Generate World Zones for each affinity.
         For i = 0 To Enumerations.NUM_OF_AFFINITIES
             _worldZones.Add(New WorldZone(i))
@@ -17,6 +19,8 @@
     ''' </summary>
     ''' <param name="GymsPerZone">Sets that default amount of GymZones that will exist in a Gym</param>
     Public Sub New(ByVal GymsPerZone As Integer)
+        _worldZones = New List(Of WorldZone)
+
         'Generate World Zones for each affinity.
         For i = 0 To Enumerations.NUM_OF_AFFINITIES
             _worldZones.Add(New WorldZone(GymsPerZone, i))
