@@ -23,6 +23,7 @@ Public Class MainViewModel
         _pageViewModels.Add(Enumerations.PageEnum.MainMenu, New MainMenuViewModel())
         _pageViewModels.Add(Enumerations.PageEnum.LoadGame, New LoadGameMenuViewModel())
         _pageViewModels.Add(Enumerations.PageEnum.NewGame, New NewGameMenuViewModel())
+        _pageViewModels.Add(Enumerations.PageEnum.WorldMap, New WorldMapViewModel(New World()))
 
         WireUpPageViewModelEvents()
 

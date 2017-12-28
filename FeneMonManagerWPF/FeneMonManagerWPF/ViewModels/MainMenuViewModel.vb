@@ -47,4 +47,27 @@ Public Class MainMenuViewModel
         RaiseNavigation(Enumerations.PageEnum.LoadGame)
     End Sub
 #End Region
+
+
+#Region "World Map Command"
+
+    Private _WorldMapCommand As RelayCommand
+
+    Public ReadOnly Property WorldMapCommand() As ICommand
+        Get
+            If _WorldMapCommand Is Nothing Then
+                _WorldMapCommand = New RelayCommand(New Action(Of Object)(AddressOf WorldMap), New Predicate(Of Object)(AddressOf CanWorldMap))
+            End If
+            Return _WorldMapCommand
+        End Get
+    End Property
+
+    Private Function CanWorldMap() As Boolean
+        Return True
+    End Function
+
+    Private Sub WorldMap()
+        RaiseNavigation(Enumerations.PageEnum.WorldMap)
+    End Sub
+#End Region
 End Class

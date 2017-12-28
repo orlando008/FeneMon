@@ -23,6 +23,9 @@
         <DataTemplate DataType="{x:Type local:NewGameMenuViewModel}">
             <local:NewGameMenu></local:NewGameMenu>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:WorldMapViewModel}">
+            <local:WorldMapControl></local:WorldMapControl>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">

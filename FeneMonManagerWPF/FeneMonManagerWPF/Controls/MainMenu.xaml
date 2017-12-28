@@ -9,5 +9,6 @@
     <StackPanel Orientation="Vertical">
         <Button Command="{Binding NewGameCommand}">New Game</Button>
         <Button Command="{Binding LoadGameCommand}">Load Game</Button>
+        <Button Command="{Binding WorldMapCommand}">World Map</Button>
     </StackPanel>
 </UserControl>

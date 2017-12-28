@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="WorldMapControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FeneMonManagerWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Background="AntiqueWhite">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <local:WorldMapZoneControl x:Name="worldZone1" Grid.Column="0" Grid.Row="0"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone2" Grid.Column="1" Grid.Row="0"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone3" Grid.Column="2" Grid.Row="0"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone4" Grid.Column="3" Grid.Row="0"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone5" Grid.Column="4" Grid.Row="0"></local:WorldMapZoneControl>
+
+        <local:WorldMapZoneControl x:Name="worldZone6" Grid.Column="0" Grid.Row="1"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone7" Grid.Column="1" Grid.Row="1"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone8" Grid.Column="2" Grid.Row="1"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone9" Grid.Column="3" Grid.Row="1"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone10" Grid.Column="4" Grid.Row="1"></local:WorldMapZoneControl>
+
+        <local:WorldMapZoneControl x:Name="worldZone11" Grid.Column="0" Grid.Row="3"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone12" Grid.Column="1" Grid.Row="3"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone13" Grid.Column="2" Grid.Row="3"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone14" Grid.Column="3" Grid.Row="3"></local:WorldMapZoneControl>
+        <local:WorldMapZoneControl x:Name="worldZone15" Grid.Column="4" Grid.Row="3"></local:WorldMapZoneControl>
+
+    </Grid>
+</UserControl>

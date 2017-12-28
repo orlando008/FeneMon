@@ -3,6 +3,7 @@
         MainMenu
         LoadGame
         NewGame
+        WorldMap
     End Enum
 
     Public Enum ElementEnum

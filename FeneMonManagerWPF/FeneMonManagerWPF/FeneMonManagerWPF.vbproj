@@ -75,11 +75,19 @@
     <Compile Include="Controls\NewGameMenu.xaml.vb">
       <DependentUpon>NewGameMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\WorldMapControl.xaml.vb">
+      <DependentUpon>WorldMapControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WorldMapZoneControl.xaml.vb">
+      <DependentUpon>WorldMapZoneControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MenuViewModelBase.vb" />
     <Compile Include="ViewModels\LoadGameMenuViewModel.vb" />
     <Compile Include="ViewModels\MainMenuViewModel.vb" />
     <Compile Include="ViewModels\MainViewModel.vb" />
     <Compile Include="ViewModels\NewGameMenuViewModel.vb" />
+    <Compile Include="ViewModels\WorldMapViewModel.vb" />
+    <Compile Include="ViewModels\WorldMapZoneViewModel.vb" />
     <Page Include="Controls\LoadGameMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,6 +97,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\NewGameMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WorldMapControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WorldMapZoneControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
