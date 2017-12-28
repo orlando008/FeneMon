@@ -1,12 +1,4 @@
 ﻿Public Class WorldMapControl
-    Private Sub WorldMap_Initialized(sender As Object, e As EventArgs) Handles Me.Initialized
-
-    End Sub
-
-    Private Sub WorldMap_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
-
-    End Sub
-
     Private Sub WorldMap_DataContextChanged(sender As Object, e As DependencyPropertyChangedEventArgs) Handles Me.DataContextChanged
         If worldZone1.DataContext Is Nothing Then
             Dim wmap As World = CType(Me.DataContext, WorldMapViewModel).WorldMap
