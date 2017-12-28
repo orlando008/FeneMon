@@ -15,7 +15,9 @@
         Dim attackValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, attacker)
         Dim defenseValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, defender)
 
-        Return attackValue / defenseValue
+        ' can probably factor in more modifiers and constants
+        ' for now, just power types the attack/defense ratio
+        Return attack.Power * attackValue / defenseValue
 
     End Function
 
@@ -39,6 +41,15 @@
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    ' returns IList to reduce dependancy on System.Linq
+    Public Shared Function ResolveActionOrder(actions As IEnumerable(Of BattleAction)) As IList(Of BattleAction)
+        Return actions.OrderBy(Function(a) CalculateActionSpeed(a)).ToList
+    End Function
+
+    Private Shared Function CalculateActionSpeed(action As BattleAction) As Integer
+        Return action.User.CurrentSpeed * action.Move.SpeedFactor
     End Function
 
 End Class

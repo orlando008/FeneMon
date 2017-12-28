@@ -65,10 +65,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\FeneMonMove.vb" />
+    <Compile Include="Methods\BattleAction.vb" />
     <Compile Include="Methods\BattleMethods.vb" />
     <Compile Include="GameObjects\FeneMon.vb" />
     <Compile Include="GameObjects\Fighter.vb" />
     <Compile Include="GameObjects\Gym.vb" />
+    <Compile Include="Methods\BattleStateBase.vb" />
+    <Compile Include="Methods\SimulatedBattleState.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

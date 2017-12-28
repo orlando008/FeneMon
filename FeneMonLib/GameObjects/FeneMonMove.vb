@@ -6,12 +6,14 @@ Public Class FeneMonMove
     Private _element As Enumerations.ElementEnum
     Private _power As Integer
     Private _damageType As Enumerations.DamageTypeEnum
+    Private _speedFactor As Integer
 
-    Public Sub New(name As String, element As Enumerations.ElementEnum, power As Integer, damageType As Enumerations.DamageTypeEnum)
+    Public Sub New(name As String, element As Enumerations.ElementEnum, power As Integer, damageType As Enumerations.DamageTypeEnum, speedFactor As Integer)
         Me.Name = name
         Me.Element = element
         Me.Power = power
         Me.DamageType = damageType
+        Me.SpeedFactor = speedFactor
     End Sub
 
     Public Property Name As String
@@ -47,6 +49,15 @@ Public Class FeneMonMove
         End Get
         Set(value As Enumerations.DamageTypeEnum)
             _damageType = value
+        End Set
+    End Property
+
+    Public Property SpeedFactor As Integer
+        Get
+            Return _speedFactor
+        End Get
+        Set(value As Integer)
+            _speedFactor = value
         End Set
     End Property
 End Class

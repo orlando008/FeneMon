@@ -16,6 +16,8 @@
     Private _currentSpecialAttack As Integer
     Private _currentSpecialDefense As Integer
 
+    Private _moves As IList(Of FeneMonMove)
+
     Public Sub New(maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer)
         Me.MaxHealth = maxHealth
         Me.Attack = attack
@@ -136,6 +138,12 @@
         Set(value As Integer)
             _currentSpecialDefense = value
         End Set
+    End Property
+
+    Public ReadOnly Property Moves As IReadOnlyList(Of FeneMonMove)
+        Get
+            Return _moves
+        End Get
     End Property
 
     Public Sub ResetEffectiveStats()
