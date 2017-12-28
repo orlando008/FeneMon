@@ -1,24 +1,41 @@
 ﻿Public Class WorldZone
-    Private _gyms As List(Of Gym)
+
+
+    Private _gym As Gym
     Private _affinity As Enumerations.ElementEnum
 
-    Public Sub New()
-        'Generate random list of gyms 
+    ''' <summary>
+    ''' Generate a new World Zone. The Default number of GymZones in a Gym is 2.
+    ''' </summary>
+    ''' <param name="affinity">Affinity of the world zone.</param>
+    Public Sub New(ByVal affinity As Enumerations.ElementEnum)
+
+        _affinity = affinity
+        _gym = New Gym(2)
+
     End Sub
 
-    Public Sub New(gyms As List(Of Gym), affinity As Enumerations.ElementEnum)
-        _gyms = gyms
+    ''' <summary>
+    ''' Generate a new World Zone.
+    ''' </summary>
+    ''' <param name="affinity">Affinity of the world zone.</param>
+    ''' <param name="numGymZones">Number of Gym Zones in a Gym</param>
+    Public Sub New(ByVal affinity As Enumerations.ElementEnum, ByVal numGymZones As Integer)
+
         _affinity = affinity
+        _gym = New Gym(numGymZones)
+
     End Sub
+
 
 #Region "Public Properties"
 
-    Public Property Gyms As List(Of Gym)
+    Public Property Gym As Gym
         Get
-            Return _gyms
+            Return _gym
         End Get
-        Set(value As List(Of Gym))
-            _gyms = value
+        Set(value As Gym)
+            _gym = value
         End Set
     End Property
 

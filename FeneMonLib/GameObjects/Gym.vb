@@ -3,8 +3,25 @@
     Private _gymZones As List(Of GymZone)
     Private _name As String
 
-    Public Sub New()
-        'Generate a random list of Gym Zones
+    ''' <summary>
+    ''' Generate a new Gym with a number of GymZones.
+    ''' </summary>
+    ''' <param name="numGymZones">The Number of GymZones in a Gym. Must be greater than or equal to one.</param>
+    Public Sub New(ByVal numGymZones As Integer)
+        If numGymZones <= 0 Then
+            Throw New Exception("The number of Gym Zones in a Gym must be greater than or equal to one.")
+        End If
+
+        For i = 0 To numGymZones
+            If i = 0 Then
+                'Add the Boss fighter
+                _gymZones.Add(New GymZone(True))
+            Else
+                'All other fighters/GymZones in a gym will not be Bosses
+                _gymZones.Add(New GymZone(False))
+            End If
+        Next
+
     End Sub
 
     Public Sub New(gymZones As List(Of GymZone), name As String)

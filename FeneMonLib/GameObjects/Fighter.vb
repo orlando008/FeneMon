@@ -3,6 +3,11 @@
     Private _name As String
     Private _monsList As List(Of FeneMon)
 
+    Public Sub New(name As String)
+        _name = name
+        '_monsList = TODO JK: Generate a random list of mons
+    End Sub
+
     Public Sub New(name As String, monsList As List(Of FeneMon))
         _name = name
         _monsList = monsList
