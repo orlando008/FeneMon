@@ -46,6 +46,7 @@
 
                 If c IsNot Nothing Then
                     c.DataContext = wmap.WorldZones(index - 1)
+                    c.WorldMapVM = CType(Me.DataContext, WorldMapViewModel)
                 End If
             Next
 

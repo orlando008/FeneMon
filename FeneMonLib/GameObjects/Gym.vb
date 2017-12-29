@@ -13,7 +13,7 @@
         End If
         _gymZones = New List(Of GymZone)
 
-        For i = 0 To numGymZones
+        For i = 0 To numGymZones - 1
             If i = 0 Then
                 'Add the Boss fighter
                 _gymZones.Add(New GymZone(True, True))

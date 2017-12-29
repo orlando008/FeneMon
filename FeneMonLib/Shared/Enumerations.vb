@@ -5,6 +5,7 @@
         LoadGame
         NewGame
         WorldMap
+        Gym
     End Enum
 
     Public Enum ElementEnum

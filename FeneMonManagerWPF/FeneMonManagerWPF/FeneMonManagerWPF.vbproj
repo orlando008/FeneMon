@@ -69,6 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\GymControl.xaml.vb">
+      <DependentUpon>GymControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\GymZoneControl.xaml.vb">
+      <DependentUpon>GymZoneControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\LoadGameMenu.xaml.vb">
       <DependentUpon>LoadGameMenu.xaml</DependentUpon>
     </Compile>
@@ -82,12 +88,21 @@
       <DependentUpon>WorldMapZoneControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuViewModelBase.vb" />
+    <Compile Include="ViewModels\GymViewModel.vb" />
     <Compile Include="ViewModels\LoadGameMenuViewModel.vb" />
     <Compile Include="ViewModels\MainMenuViewModel.vb" />
     <Compile Include="ViewModels\MainViewModel.vb" />
     <Compile Include="ViewModels\NewGameMenuViewModel.vb" />
     <Compile Include="ViewModels\WorldMapViewModel.vb" />
     <Compile Include="ViewModels\WorldMapZoneViewModel.vb" />
+    <Page Include="Controls\GymControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\GymZoneControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\LoadGameMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

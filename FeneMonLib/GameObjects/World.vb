@@ -23,7 +23,7 @@
 
         'Generate World Zones for each affinity.
         For i = 0 To CType([Enum].GetValues(GetType(Enumerations.ElementEnum)), Integer()).Last
-            _worldZones.Add(New WorldZone(GymsPerZone, i))
+            _worldZones.Add(New WorldZone(i, GymsPerZone))
         Next
     End Sub
 

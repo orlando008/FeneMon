@@ -8,6 +8,9 @@ Public Class MainViewModel
     Private _pageViewModels As Dictionary(Of Enumerations.PageEnum, MenuViewModelBase)
     Private _currentPageViewModel As MenuViewModelBase
 
+    Public Property MainMenuVM As MainMenuViewModel
+    Public Property CurrentWorld As World
+
     Public Property CurrentPageViewModel As MenuViewModelBase
         Get
             Return _currentPageViewModel
@@ -21,9 +24,13 @@ Public Class MainViewModel
     Public Sub New()
         _pageViewModels = New Dictionary(Of Enumerations.PageEnum, MenuViewModelBase)()
         _pageViewModels.Add(Enumerations.PageEnum.MainMenu, New MainMenuViewModel())
+        MainMenuVM = _pageViewModels(Enumerations.PageEnum.MainMenu)
+        CurrentWorld = New World(15)
+
         _pageViewModels.Add(Enumerations.PageEnum.LoadGame, New LoadGameMenuViewModel())
         _pageViewModels.Add(Enumerations.PageEnum.NewGame, New NewGameMenuViewModel())
-        _pageViewModels.Add(Enumerations.PageEnum.WorldMap, New WorldMapViewModel(New World()))
+        _pageViewModels.Add(Enumerations.PageEnum.WorldMap, New WorldMapViewModel(CurrentWorld))
+        _pageViewModels.Add(Enumerations.PageEnum.Gym, New GymViewModel(_pageViewModels(Enumerations.PageEnum.WorldMap)))
 
         WireUpPageViewModelEvents()
 
