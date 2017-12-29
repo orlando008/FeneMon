@@ -1,7 +1,5 @@
 ﻿Public Class Enumerations
 
-    Public Const NUM_OF_AFFINITIES As Integer = 15
-
     Public Enum PageEnum
         MainMenu
         LoadGame
