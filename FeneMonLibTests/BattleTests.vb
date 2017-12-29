@@ -31,4 +31,42 @@ Imports FeneMonLib
         AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
     End Sub
 
+    <TestMethod()> Public Sub SimulatedBattleState_SameMonSpeed_DifferentMoveSpeed_FasterMoveFirst()
+        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)})
+        Dim defender As New FeneMon("Watermon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 2), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)})
+
+        Dim logger As New TestLogger
+
+        Dim battle As BattleStateBase = New SimulatedBattleState
+        battle.StartBattle(challenger, defender, logger)
+
+        Assert.AreEqual(0, challenger.CurrentHealth)
+        Assert.AreNotEqual(0, defender.CurrentHealth)
+
+        Dim desiredLogs As New List(Of String)
+        desiredLogs.Add("Watermon did 10 damage to Firemon")
+        desiredLogs.Add("Firemon fainted!")
+
+        AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
+    End Sub
+
+    <TestMethod()> Public Sub SimulatedBattleState_DifferentMonSpeed_SameMoveSpeed_FasterMoveFirst()
+        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)})
+        Dim defender As New FeneMon("Watermon", 10, 10, 10, 11, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)})
+
+        Dim logger As New TestLogger
+
+        Dim battle As BattleStateBase = New SimulatedBattleState
+        battle.StartBattle(challenger, defender, logger)
+
+        Assert.AreEqual(0, challenger.CurrentHealth)
+        Assert.AreNotEqual(0, defender.CurrentHealth)
+
+        Dim desiredLogs As New List(Of String)
+        desiredLogs.Add("Watermon did 10 damage to Firemon")
+        desiredLogs.Add("Firemon fainted!")
+
+        AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
+    End Sub
+
 End Class

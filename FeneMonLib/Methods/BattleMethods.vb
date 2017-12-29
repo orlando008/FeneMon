@@ -48,7 +48,7 @@
 
     ' returns IList to reduce dependancy on System.Linq
     Public Shared Function ResolveActionOrder(actions As IEnumerable(Of BattleAction)) As IList(Of BattleAction)
-        Return actions.OrderBy(Function(a) CalculateActionSpeed(a)).ToList
+        Return actions.OrderByDescending(Function(a) CalculateActionSpeed(a)).ToList
     End Function
 
     Private Shared Function CalculateActionSpeed(action As BattleAction) As Integer
