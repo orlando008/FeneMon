@@ -2,6 +2,7 @@
 
     Private _challenger As FeneMon
     Private _defender As FeneMon
+    Private _logger As ILogger
 
     Public Property Challenger As FeneMon
         Get
@@ -21,7 +22,9 @@
         End Set
     End Property
 
-    Public Sub StartBattle(challenger As FeneMon, defender As FeneMon)
+    Public Sub StartBattle(challenger As FeneMon, defender As FeneMon, logger As ILogger)
+        _logger = logger
+
         Me.Challenger = challenger
         Me.Defender = defender
 
@@ -43,11 +46,12 @@
             Dim orderedActions As IList(Of BattleAction) = BattleMethods.ResolveActionOrder({challengerAction, defenderAction})
 
             For Each action As BattleAction In orderedActions
-                BattleMethods.ResolveAttack(action.Move, action.User, action.Target)
+                BattleMethods.ResolveAttack(action.Move, action.User, action.Target, _logger)
 
                 ' target fainted, battle is over
                 ' todo: switch Mons?
                 If action.Target.CurrentHealth = 0 Then
+                    _logger.LogMessage($"{action.Target.Name} fainted!")
                     Exit While
                 End If
             Next

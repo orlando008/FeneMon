@@ -1,5 +1,7 @@
 ﻿Public Class FeneMon
 
+    Private _name As String
+
     ' base stats
     Private _maxHealth As Integer
     Private _attack As Integer
@@ -18,7 +20,8 @@
 
     Private _moves As IList(Of FeneMonMove)
 
-    Public Sub New(maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove))
+    Public Sub New(name As String, maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove))
+        Me.Name = name
         Me.MaxHealth = maxHealth
         Me.Attack = attack
         Me.Defense = defense
@@ -29,6 +32,15 @@
         ResetEffectiveStats()
         RestoreToFullHealth()
     End Sub
+
+    Public Property Name As String
+        Get
+            Return _name
+        End Get
+        Set(value As String)
+            _name = value
+        End Set
+    End Property
 
     Public Property MaxHealth As Integer
         Get

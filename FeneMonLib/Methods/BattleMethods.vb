@@ -1,12 +1,15 @@
 ﻿Public Class BattleMethods
 
-    Public Shared Sub ResolveAttack(attack As FeneMonMove, attacker As FeneMon, defender As FeneMon)
+    Public Shared Sub ResolveAttack(attack As FeneMonMove, attacker As FeneMon, defender As FeneMon, logger As ILogger)
 
         ' calculate damage
         Dim damage As Integer = CalculateDamage(attack, attacker, defender)
 
         ' apply it to the defender
         defender.CurrentHealth -= damage
+
+        ' log the damage
+        logger.LogMessage($"{attacker.Name} did {damage} damage to {defender.Name}")
 
     End Sub
 
