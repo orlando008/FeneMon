@@ -1,4 +1,6 @@
-﻿<DebuggerDisplay("{Me.Name}")>
+﻿Imports FeneMonLib
+
+<DebuggerDisplay("{Me.Name}")>
 Public Class FeneMon
 
     Private _name As String
@@ -8,11 +10,14 @@ Public Class FeneMon
 
     Private _moves As IList(Of FeneMonMove)
 
-    Public Sub New(name As String, maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove))
+    Private _element As Enumerations.ElementEnum
+
+    Public Sub New(name As String, maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove), element As Enumerations.ElementEnum)
         Me.Name = name
         _baseStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
         _effectiveStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
         _moves = moves
+        Me.Element = element
         ResetEffectiveStats()
         RestoreToFullHealth()
     End Sub
@@ -123,6 +128,15 @@ Public Class FeneMon
         Get
             Return _moves
         End Get
+    End Property
+
+    Public Property Element As Enumerations.ElementEnum
+        Get
+            Return _element
+        End Get
+        Set(value As Enumerations.ElementEnum)
+            _element = value
+        End Set
     End Property
 
     Public Sub ResetEffectiveStats()
