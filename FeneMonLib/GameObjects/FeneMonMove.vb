@@ -1,5 +1,6 @@
 ﻿Imports FeneMonLib
 
+<DebuggerDisplay("{Me.Name}")>
 Public Class FeneMonMove
 
     Private _name As String

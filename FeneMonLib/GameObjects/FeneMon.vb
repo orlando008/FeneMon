@@ -1,4 +1,5 @@
-﻿Public Class FeneMon
+﻿<DebuggerDisplay("{Me.Name}")>
+Public Class FeneMon
 
     Private _name As String
 
