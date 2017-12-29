@@ -3,32 +3,15 @@ Public Class FeneMon
 
     Private _name As String
 
-    ' base stats
-    Private _maxHealth As Integer
-    Private _attack As Integer
-    Private _defense As Integer
-    Private _speed As Integer
-    Private _specialAttack As Integer
-    Private _specialDefense As Integer
-
-    ' effective stats
-    Private _currentHealth As Integer
-    Private _currentAttack As Integer
-    Private _currentDefense As Integer
-    Private _currentSpeed As Integer
-    Private _currentSpecialAttack As Integer
-    Private _currentSpecialDefense As Integer
+    Private _baseStats As FeneMonStats
+    Private _effectiveStats As FeneMonStats
 
     Private _moves As IList(Of FeneMonMove)
 
     Public Sub New(name As String, maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove))
         Me.Name = name
-        Me.MaxHealth = maxHealth
-        Me.Attack = attack
-        Me.Defense = defense
-        Me.Speed = speed
-        Me.SpecialAttack = specialAttack
-        Me.SpecialDefense = specialDefense
+        _baseStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
+        _effectiveStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
         _moves = moves
         ResetEffectiveStats()
         RestoreToFullHealth()
@@ -43,114 +26,96 @@ Public Class FeneMon
         End Set
     End Property
 
-    Public Property MaxHealth As Integer
+    Public ReadOnly Property MaxHealth As Integer
         Get
-            Return _maxHealth
+            Return _baseStats.Health
         End Get
-        Set(value As Integer)
-            _maxHealth = value
-        End Set
     End Property
 
-    Public Property Attack As Integer
+    Public ReadOnly Property Attack As Integer
         Get
-            Return _attack
+            Return _baseStats.Attack
         End Get
-        Set(value As Integer)
-            _attack = value
-        End Set
     End Property
 
-    Public Property Defense As Integer
+    Public ReadOnly Property Defense As Integer
         Get
-            Return _defense
+            Return _baseStats.Defense
         End Get
-        Set(value As Integer)
-            _defense = value
-        End Set
     End Property
 
-    Public Property Speed As Integer
+    Public ReadOnly Property Speed As Integer
         Get
-            Return _speed
+            Return _baseStats.Speed
         End Get
-        Set(value As Integer)
-            _speed = value
-        End Set
     End Property
 
-    Public Property SpecialAttack As Integer
+    Public ReadOnly Property SpecialAttack As Integer
         Get
-            Return _specialAttack
+            Return _baseStats.SpecialAttack
         End Get
-        Set(value As Integer)
-            _specialAttack = value
-        End Set
     End Property
 
-    Public Property SpecialDefense As Integer
+    Public ReadOnly Property SpecialDefense As Integer
         Get
-            Return _specialDefense
+            Return _baseStats.SpecialDefense
         End Get
-        Set(value As Integer)
-            _specialDefense = value
-        End Set
     End Property
 
     Public Property CurrentHealth As Integer
         Get
-            Return _currentHealth
+            Return _effectiveStats.Health
         End Get
         Set(value As Integer)
             ' health should never go below 0
             If value < 0 Then value = 0
 
-            _currentHealth = value
+            _effectiveStats.Health = value
         End Set
     End Property
 
     Public Property CurrentAttack As Integer
         Get
-            Return _currentAttack
+            Return _effectiveStats.Attack
         End Get
         Set(value As Integer)
-            _currentAttack = value
+            _effectiveStats.Attack = value
         End Set
     End Property
 
     Public Property CurrentDefense As Integer
         Get
-            Return _currentDefense
+            Return _effectiveStats.Defense
         End Get
         Set(value As Integer)
-            _currentDefense = value
+            _effectiveStats.Defense = value
         End Set
     End Property
 
     Public Property CurrentSpeed As Integer
         Get
-            Return _currentSpeed
+            Return _effectiveStats.Speed
         End Get
         Set(value As Integer)
-            _currentSpeed = value
+            _effectiveStats.Speed = value
         End Set
     End Property
 
     Public Property CurrentSpecialAttack As Integer
         Get
-            Return _currentSpecialAttack
+            Return _effectiveStats.SpecialAttack
         End Get
         Set(value As Integer)
-            _currentSpecialAttack = value
+            _effectiveStats.SpecialAttack = value
         End Set
     End Property
 
     Public Property CurrentSpecialDefense As Integer
         Get
-            Return _currentSpecialDefense
+            Return _effectiveStats.SpecialDefense
         End Get
         Set(value As Integer)
-            _currentSpecialDefense = value
+            _effectiveStats.SpecialDefense = value
         End Set
     End Property
 

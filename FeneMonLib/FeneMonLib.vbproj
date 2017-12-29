@@ -65,6 +65,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GameObjects\FeneMonMove.vb" />
+    <Compile Include="GameObjects\FeneMonStats.vb" />
     <Compile Include="Methods\BattleAction.vb" />
     <Compile Include="Methods\BattleMethods.vb" />
     <Compile Include="GameObjects\FeneMon.vb" />
