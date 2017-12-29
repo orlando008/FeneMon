@@ -16,10 +16,11 @@
         For i = 0 To numGymZones
             If i = 0 Then
                 'Add the Boss fighter
-                _gymZones.Add(New GymZone(True))
+                _gymZones.Add(New GymZone(True, True))
             Else
                 'All other fighters/GymZones in a gym will not be Bosses
-                _gymZones.Add(New GymZone(False))
+                'Initially all other GymZones will be locked. This could change in the future.
+                _gymZones.Add(New GymZone(False, False))
             End If
         Next
 

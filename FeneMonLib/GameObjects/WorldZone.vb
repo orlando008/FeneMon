@@ -5,13 +5,13 @@
     Private _affinity As Enumerations.ElementEnum
 
     ''' <summary>
-    ''' Generate a new World Zone. The Default number of GymZones in a Gym is 2.
+    ''' Generate a new World Zone. The Default number of GymZones in a Gym is 15.
     ''' </summary>
     ''' <param name="affinity">Affinity of the world zone.</param>
     Public Sub New(ByVal affinity As Enumerations.ElementEnum)
 
         _affinity = affinity
-        _gym = New Gym(2)
+        _gym = New Gym(15)
 
     End Sub
 
