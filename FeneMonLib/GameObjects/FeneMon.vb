@@ -18,13 +18,14 @@
 
     Private _moves As IList(Of FeneMonMove)
 
-    Public Sub New(maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer)
+    Public Sub New(maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove))
         Me.MaxHealth = maxHealth
         Me.Attack = attack
         Me.Defense = defense
         Me.Speed = speed
         Me.SpecialAttack = specialAttack
         Me.SpecialDefense = specialDefense
+        _moves = moves
         ResetEffectiveStats()
         RestoreToFullHealth()
     End Sub

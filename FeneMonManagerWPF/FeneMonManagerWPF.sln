@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonManagerWPF", "FeneMonManagerWPF\FeneMonManagerWPF.vbproj", "{5F8B8E4B-E6C6-419E-86B8-64E4EE8E3754}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLib", "..\FeneMonLib\FeneMonLib.vbproj", "{07324C90-8343-4329-9AEC-EED7DDB890D6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLibTests", "..\FeneMonLibTests\FeneMonLibTests.vbproj", "{BD8E103E-7271-42BA-9B7B-76F8D2327558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{07324C90-8343-4329-9AEC-EED7DDB890D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07324C90-8343-4329-9AEC-EED7DDB890D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07324C90-8343-4329-9AEC-EED7DDB890D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD8E103E-7271-42BA-9B7B-76F8D2327558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD8E103E-7271-42BA-9B7B-76F8D2327558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD8E103E-7271-42BA-9B7B-76F8D2327558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD8E103E-7271-42BA-9B7B-76F8D2327558}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {540DC94C-A645-4244-BF94-B90DAB674AE1}
 	EndGlobalSection
 EndGlobal
