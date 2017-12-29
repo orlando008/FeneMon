@@ -16,7 +16,7 @@
     Private Shared Function CalculateDamage(attack As FeneMonMove, attacker As FeneMon, defender As FeneMon) As Integer
 
         Dim attackValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, attacker)
-        Dim defenseValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, defender)
+        Dim defenseValue As Integer = GetEffectiveDefenseAttributeValue(attack.DamageType, defender)
 
         ' can probably factor in more modifiers and constants
         ' for now, just power types the attack/defense ratio
