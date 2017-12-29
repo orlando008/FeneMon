@@ -17,10 +17,11 @@
 
         Dim attackValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, attacker)
         Dim defenseValue As Integer = GetEffectiveDefenseAttributeValue(attack.DamageType, defender)
+        Dim STAB As Double = GetSameTypeAttackBonus(attack.Element, attacker.Element)
 
         ' can probably factor in more modifiers and constants
         ' for now, just power types the attack/defense ratio
-        Return attack.Power * attackValue / defenseValue
+        Return (attack.Power * STAB) * attackValue / defenseValue
 
     End Function
 
@@ -44,6 +45,20 @@
             Case Else
                 Throw New NotImplementedException
         End Select
+    End Function
+
+    ''' <summary>
+    ''' Gets the STAB factor
+    ''' </summary>
+    ''' <param name="attackType"></param>
+    ''' <param name="attackerType"></param>
+    ''' <returns></returns>
+    Private Shared Function GetSameTypeAttackBonus(attackType As Enumerations.ElementEnum, attackerType As Enumerations.ElementEnum) As Double
+        If attackType = attackerType Then
+            Return 1.5
+        End If
+
+        Return 1
     End Function
 
     ' returns IList to reduce dependancy on System.Linq

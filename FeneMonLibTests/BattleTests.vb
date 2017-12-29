@@ -25,7 +25,7 @@ Imports FeneMonLib
         Assert.AreNotEqual(0, challenger.CurrentHealth)
 
         Dim desiredLogs As New List(Of String)
-        desiredLogs.Add("Firemon did 10 damage to Watermon")
+        desiredLogs.Add("Firemon did 15 damage to Watermon")
         desiredLogs.Add("Watermon fainted!")
 
         AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
@@ -82,7 +82,7 @@ Imports FeneMonLib
         Assert.AreNotEqual(0, challenger.CurrentHealth)
 
         Dim desiredLogs As New List(Of String)
-        desiredLogs.Add("Firemon did 20 damage to Watermon")
+        desiredLogs.Add("Firemon did 30 damage to Watermon")
         desiredLogs.Add("Watermon fainted!")
 
         AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
@@ -101,7 +101,7 @@ Imports FeneMonLib
         Assert.AreNotEqual(0, challenger.CurrentHealth)
 
         Dim desiredLogs As New List(Of String)
-        desiredLogs.Add("Firemon did 5 damage to Watermon")
+        desiredLogs.Add("Firemon did 8 damage to Watermon")
         desiredLogs.Add("Watermon did 5 damage to Firemon")
         desiredLogs.Add("Firemon did 10 damage to Watermon")
         desiredLogs.Add("Watermon fainted!")
@@ -125,7 +125,7 @@ Imports FeneMonLib
         desiredLogs.Add("Firemon did 0 damage to Watermon")
         desiredLogs.Add("Watermon did 0 damage to Firemon")
         desiredLogs.Add("Firemon did 5 damage to Watermon")
-        desiredLogs.Add("Watermon did 5 damage to Firemon")
+        desiredLogs.Add("Watermon did 8 damage to Firemon")
         desiredLogs.Add("Firemon did 0 damage to Watermon")
         desiredLogs.Add("Watermon did 0 damage to Firemon")
         desiredLogs.Add("Firemon did 5 damage to Watermon")
