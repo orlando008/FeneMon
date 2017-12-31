@@ -1,36 +1,74 @@
-﻿Public Class Fighter
+﻿Imports System.Collections.ObjectModel
+Imports FeneMonLib
 
-    Private _name As String
-    Private _monsList As List(Of FeneMon)
+Public Class Fighter
+    Inherits ViewModelBase
 
-    Public Sub New(name As String)
-        _name = name
+    Private _lastName As String
+    Private _firstName As String
+    Private _monsList As ObservableCollection(Of FeneMon)
+    Private ReadOnly _parentGymZone As GymZone
+
+    ''' <summary>
+    ''' Generate a new Fighter
+    ''' </summary>
+    ''' <param name="parentGymZone">The parent Gym Zone to the Fighter</param>
+    ''' <param name="lastName">Last Name of the Fighter</param>
+    ''' <param name="firstName">First Name of the Fighter</param>
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String)
+        _parentGymZone = parentGymZone
+        _lastName = lastName
+        _firstName = firstName
         '_monsList = TODO JK: Generate a random list of mons
     End Sub
 
-    Public Sub New(name As String, monsList As List(Of FeneMon))
-        _name = name
+    ''' <summary>
+    ''' Generate a new Fighter
+    ''' </summary>
+    ''' <param name="parentGymZone">The parent Gym Zone to the Fighter</param>
+    ''' <param name="lastName">Last Name of the Fighter</param>
+    ''' <param name="firstName">First Name of the Fighter</param>
+    ''' <param name="monsList">A list of Mons that belong to the fighter</param>
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal monsList As ObservableCollection(Of FeneMon))
+        _lastName = lastName
+        _firstName = _firstName
+        _parentGymZone = parentGymZone
         _monsList = monsList
     End Sub
 
 #Region "Public Properties"
 
-    Public Property Name As String
+    Public Property LastName As String
         Get
-            Return _name
+            Return _lastName
         End Get
         Set(value As String)
-            _name = value
+            _lastName = value
         End Set
     End Property
 
-    Public Property MonsList As List(Of FeneMon)
+    Public Property MonsList As ObservableCollection(Of FeneMon)
         Get
             Return _monsList
         End Get
-        Set(value As List(Of FeneMon))
+        Set(value As ObservableCollection(Of FeneMon))
             _monsList = value
         End Set
+    End Property
+
+    Public Property FirstName As String
+        Get
+            Return _firstName
+        End Get
+        Set(value As String)
+            _firstName = value
+        End Set
+    End Property
+
+    Public ReadOnly Property ParentGymZone As GymZone
+        Get
+            Return _parentGymZone
+        End Get
     End Property
 
 #End Region

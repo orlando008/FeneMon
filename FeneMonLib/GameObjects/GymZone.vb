@@ -1,23 +1,30 @@
 ﻿Imports FeneMonLib
 
 Public Class GymZone
+    Inherits ViewModelBase
 
     Private _fighter As Fighter
     Private _isBossZone As Boolean
     Private _isUnlocked As Boolean
+    Private ReadOnly _parentGym As Gym
 
     ''' <summary>
     ''' Generate a new GymZone.
     ''' </summary>
+    ''' <param name="parentGym">The parent Gym to the GymZone.</param>
     ''' <param name="isBossZone">Indicates whether or not the GymZone is a boss Zone.</param>
-    Public Sub New(ByVal isBossZone As Boolean, ByVal isUnlocked As Boolean)
+    ''' <param name="isUnlocked">Indicates whether or not the GymZone is locked/unlocked to the player.</param>
+    Public Sub New(ByVal parentGym As Gym, ByVal isBossZone As Boolean, ByVal isUnlocked As Boolean)
+        _parentGym = parentGym
         _isBossZone = isBossZone
         _isUnlocked = isUnlocked
+
         'TODO JK: Make the Fighters Name Random
-        _fighter = New Fighter("Fighter's Name")
+        _fighter = New Fighter(Me, "lastName", "firstName")
     End Sub
 
-    Public Sub New(fighter As Fighter)
+    Public Sub New(ByVal parentGym As Gym, fighter As Fighter)
+        _parentGym = parentGym
         _fighter = fighter
     End Sub
 
@@ -48,6 +55,12 @@ Public Class GymZone
         Set(value As Boolean)
             _isUnlocked = value
         End Set
+    End Property
+
+    Public ReadOnly Property ParentGym As Gym
+        Get
+            Return _parentGym
+        End Get
     End Property
 
 #End Region

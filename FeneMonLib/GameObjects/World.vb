@@ -1,16 +1,19 @@
-﻿Public Class World
+﻿Imports System.Collections.ObjectModel
 
-    Private _worldZones As List(Of WorldZone)
+Public Class World
+    Inherits ViewModelBase
+
+    Private _worldZones As ObservableCollection(Of WorldZone)
 
     ''' <summary>
     ''' Generate a new FeneMon world.
     ''' </summary>
     Public Sub New()
-        _worldZones = New List(Of WorldZone)
+        _worldZones = New ObservableCollection(Of WorldZone)
 
         'Generate World Zones for each affinity.
         For i = 0 To CType([Enum].GetValues(GetType(Enumerations.ElementEnum)), Integer()).Last
-            _worldZones.Add(New WorldZone(i))
+            _worldZones.Add(New WorldZone(Me, i))
         Next
     End Sub
 
@@ -19,11 +22,11 @@
     ''' </summary>
     ''' <param name="GymsPerZone">Sets that default amount of GymZones that will exist in a Gym</param>
     Public Sub New(ByVal GymsPerZone As Integer)
-        _worldZones = New List(Of WorldZone)
+        _worldZones = New ObservableCollection(Of WorldZone)
 
         'Generate World Zones for each affinity.
         For i = 0 To CType([Enum].GetValues(GetType(Enumerations.ElementEnum)), Integer()).Last
-            _worldZones.Add(New WorldZone(i, GymsPerZone))
+            _worldZones.Add(New WorldZone(Me, i, GymsPerZone))
         Next
     End Sub
 
@@ -34,11 +37,11 @@
     ''' A property that returns the list of WorldZones in a FeneMon World.
     ''' </summary>
     ''' <returns>List(Of WorldZone)</returns>
-    Public Property WorldZones As List(Of WorldZone)
+    Public Property WorldZones As ObservableCollection(Of WorldZone)
         Get
             Return _worldZones
         End Get
-        Set(value As List(Of WorldZone))
+        Set(value As ObservableCollection(Of WorldZone))
             _worldZones = value
         End Set
     End Property
