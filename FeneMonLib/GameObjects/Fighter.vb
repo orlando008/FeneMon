@@ -16,6 +16,7 @@ Public Class Fighter
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
     Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String)
+        _monsList = New ObservableCollection(Of FeneMon)()
         _parentGymZone = parentGymZone
         _lastName = lastName
         _firstName = firstName
