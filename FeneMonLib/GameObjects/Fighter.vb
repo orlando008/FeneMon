@@ -19,7 +19,9 @@ Public Class Fighter
         _parentGymZone = parentGymZone
         _lastName = lastName
         _firstName = firstName
-        '_monsList = TODO JK: Generate a random list of mons
+
+        'Add a random mon to the Fighters list of Mons to start with
+        _monsList.Add(JsonParsingMethods.GetRandomMon())
     End Sub
 
     ''' <summary>

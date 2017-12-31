@@ -1,4 +1,5 @@
 ﻿Imports FeneMonLib
+Imports Newtonsoft.Json
 
 <DebuggerDisplay("{Me.Name}")>
 Public Class FeneMon
@@ -22,6 +23,7 @@ Public Class FeneMon
         RestoreToFullHealth()
     End Sub
 
+    <JsonProperty("Name")>
     Public Property Name As String
         Get
             Return _name
@@ -31,42 +33,49 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("MaxHealth")>
     Public ReadOnly Property MaxHealth As Integer
         Get
             Return _baseStats.Health
         End Get
     End Property
 
+    <JsonProperty("Attach")>
     Public ReadOnly Property Attack As Integer
         Get
             Return _baseStats.Attack
         End Get
     End Property
 
+    <JsonProperty("Defense")>
     Public ReadOnly Property Defense As Integer
         Get
             Return _baseStats.Defense
         End Get
     End Property
 
+    <JsonProperty("Speed")>
     Public ReadOnly Property Speed As Integer
         Get
             Return _baseStats.Speed
         End Get
     End Property
 
+    <JsonProperty("SpecialAttack")>
     Public ReadOnly Property SpecialAttack As Integer
         Get
             Return _baseStats.SpecialAttack
         End Get
     End Property
 
+    <JsonProperty("SpecialDefense")>
     Public ReadOnly Property SpecialDefense As Integer
         Get
             Return _baseStats.SpecialDefense
         End Get
     End Property
 
+    <JsonProperty("CurrentHealth")>
     Public Property CurrentHealth As Integer
         Get
             Return _effectiveStats.Health
@@ -79,6 +88,7 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("CurrentAttack")>
     Public Property CurrentAttack As Integer
         Get
             Return _effectiveStats.Attack
@@ -88,6 +98,7 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("CurrentDefense")>
     Public Property CurrentDefense As Integer
         Get
             Return _effectiveStats.Defense
@@ -97,6 +108,7 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("CurrentSpeed")>
     Public Property CurrentSpeed As Integer
         Get
             Return _effectiveStats.Speed
@@ -106,6 +118,7 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("CurrentSpecialAttack")>
     Public Property CurrentSpecialAttack As Integer
         Get
             Return _effectiveStats.SpecialAttack
@@ -115,6 +128,7 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("CurrentSpecialDefense")>
     Public Property CurrentSpecialDefense As Integer
         Get
             Return _effectiveStats.SpecialDefense
@@ -124,12 +138,14 @@ Public Class FeneMon
         End Set
     End Property
 
+    <JsonProperty("Moves")>
     Public ReadOnly Property Moves As IReadOnlyList(Of FeneMonMove)
         Get
             Return _moves
         End Get
     End Property
 
+    <JsonProperty("Element")>
     Public Property Element As Enumerations.ElementEnum
         Get
             Return _element

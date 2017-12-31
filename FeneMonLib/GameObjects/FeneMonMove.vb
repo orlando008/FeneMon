@@ -1,4 +1,5 @@
 ﻿Imports FeneMonLib
+Imports Newtonsoft.Json
 
 <DebuggerDisplay("{Me.Name}")>
 Public Class FeneMonMove
@@ -17,6 +18,7 @@ Public Class FeneMonMove
         Me.SpeedFactor = speedFactor
     End Sub
 
+    <JsonProperty("Name")>
     Public Property Name As String
         Get
             Return _name
@@ -26,6 +28,7 @@ Public Class FeneMonMove
         End Set
     End Property
 
+    <JsonProperty("Element")>
     Public Property Element As Enumerations.ElementEnum
         Get
             Return _element
@@ -35,6 +38,7 @@ Public Class FeneMonMove
         End Set
     End Property
 
+    <JsonProperty("Power")>
     Public Property Power As Integer
         Get
             Return _power
@@ -44,6 +48,7 @@ Public Class FeneMonMove
         End Set
     End Property
 
+    <JsonProperty("DamageType")>
     Public Property DamageType As Enumerations.DamageTypeEnum
         Get
             Return _damageType
@@ -53,6 +58,7 @@ Public Class FeneMonMove
         End Set
     End Property
 
+    <JsonProperty("SpeedFactor")>
     Public Property SpeedFactor As Integer
         Get
             Return _speedFactor
