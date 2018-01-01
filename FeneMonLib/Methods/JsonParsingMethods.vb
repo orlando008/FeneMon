@@ -22,7 +22,7 @@ Public Class JsonParsingMethods
         End Using
 
         Dim firstNameIndex, lastNameIndex As Integer
-        Dim r As Random = New Random()
+        Dim r As Random = New Random(Guid.NewGuid().GetHashCode())
         firstNameIndex = r.Next(0, firstNames.Count - 1)
         lastNameIndex = r.Next(0, lastNames.Count - 1)
 
