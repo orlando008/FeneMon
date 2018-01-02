@@ -70,4 +70,27 @@ Public Class MainMenuViewModel
         RaiseNavigation(Enumerations.PageEnum.WorldMap)
     End Sub
 #End Region
+
+
+#Region "Home Gym Command"
+
+    Private _HomeGymCommand As RelayCommand
+
+    Public ReadOnly Property HomeGymCommand() As ICommand
+        Get
+            If _HomeGymCommand Is Nothing Then
+                _HomeGymCommand = New RelayCommand(New Action(Of Object)(AddressOf HomeGym), New Predicate(Of Object)(AddressOf CanHomeGym))
+            End If
+            Return _HomeGymCommand
+        End Get
+    End Property
+
+    Private Function CanHomeGym() As Boolean
+        Return True
+    End Function
+
+    Private Sub HomeGym()
+        RaiseNavigation(Enumerations.PageEnum.Gym)
+    End Sub
+#End Region
 End Class

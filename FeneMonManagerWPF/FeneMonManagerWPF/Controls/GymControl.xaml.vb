@@ -4,6 +4,11 @@
 
         Dim wmap As Gym = CType(Me.DataContext, GymViewModel).ParentWorldMapVM.Gym
 
+        If wmap Is Nothing Then
+            'Go to home gym
+            wmap = CType(Me.DataContext, GymViewModel).ParentWorldMapVM.WorldMap.WorldZones(0).Gym
+        End If
+
         Dim zoneCount As Integer = 0
         If wmap.GymZones IsNot Nothing Then
             zoneCount = wmap.GymZones.Count

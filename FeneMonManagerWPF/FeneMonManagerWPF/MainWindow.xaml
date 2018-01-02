@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FeneMonManagerWPF"
+        xmlns:lib="clr-namespace:FeneMonLib;assembly=FeneMonLib"
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="FeneMon Gym Manager">
@@ -14,6 +15,8 @@
         </LinearGradientBrush>
     </Window.Background>
     <Window.Resources>
+        <Image x:Key="worldImage" Source="/Images/world.png"></Image>
+        <Image x:Key="homeImage" Source="/Images/home.png"></Image>
         <DataTemplate DataType="{x:Type local:MainMenuViewModel}">
             <local:MainMenu></local:MainMenu>
         </DataTemplate>
@@ -31,7 +34,7 @@
         </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <Menu DockPanel.Dock="Top">
+        <!--<Menu DockPanel.Dock="Top">
             <MenuItem Header="System">
                 <MenuItem Header="New Game" Command="{Binding MainMenuVM.NewGameCommand}"></MenuItem>
                 <MenuItem Header="Load Game" Command="{Binding MainMenuVM.LoadGameCommand}"></MenuItem>
@@ -49,7 +52,16 @@
             <MenuItem Header="_About">
                 
             </MenuItem>
-        </Menu>
+        </Menu>-->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <Button Content="{StaticResource worldImage}" Command="{Binding MainMenuVM.WorldMapCommand}" Width="32" Height="32"></Button>
+            <Button Content="{StaticResource homeImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
+            <StackPanel Orientation="Horizontal">
+                <Label Foreground="White">Date:</Label>
+                <Label Foreground="White" Content="{Binding CurrentWorld.CurrentDate}"></Label>
+            </StackPanel>
+            
+        </StackPanel>
         <ContentControl x:Name="ContentArea" Content="{Binding CurrentPageViewModel}"></ContentControl>
     </DockPanel>
 </Window>
