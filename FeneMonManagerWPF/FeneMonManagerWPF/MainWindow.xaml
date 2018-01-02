@@ -17,6 +17,8 @@
     <Window.Resources>
         <Image x:Key="worldImage" Source="/Images/world.png"></Image>
         <Image x:Key="homeImage" Source="/Images/home.png"></Image>
+        <Image x:Key="chartImage" Source="/Images/chart.png"></Image>
+        <Image x:Key="rosterImage" Source="/Images/roster.png"></Image>
         <DataTemplate DataType="{x:Type local:MainMenuViewModel}">
             <local:MainMenu></local:MainMenu>
         </DataTemplate>
@@ -54,8 +56,10 @@
             </MenuItem>
         </Menu>-->
         <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-            <Button Content="{StaticResource worldImage}" Command="{Binding MainMenuVM.WorldMapCommand}" Width="32" Height="32"></Button>
-            <Button Content="{StaticResource homeImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
+            <Button ToolTip="World Map" Content="{StaticResource worldImage}" Command="{Binding MainMenuVM.WorldMapCommand}" Width="32" Height="32"></Button>
+            <Button ToolTip="Home Gym" Content="{StaticResource homeImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
+            <Button ToolTip="Fighter Roster" Content="{StaticResource rosterImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
+            <Button ToolTip="Gym Finances" Content="{StaticResource chartImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
             <StackPanel Orientation="Horizontal">
                 <Label Foreground="White">Date:</Label>
                 <Label Foreground="White" Content="{Binding CurrentWorld.CurrentDate}"></Label>
