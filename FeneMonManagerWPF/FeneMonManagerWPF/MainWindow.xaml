@@ -36,26 +36,7 @@
         </DataTemplate>
     </Window.Resources>
     <DockPanel LastChildFill="True">
-        <!--<Menu DockPanel.Dock="Top">
-            <MenuItem Header="System">
-                <MenuItem Header="New Game" Command="{Binding MainMenuVM.NewGameCommand}"></MenuItem>
-                <MenuItem Header="Load Game" Command="{Binding MainMenuVM.LoadGameCommand}"></MenuItem>
-                <MenuItem Header="Save Game"></MenuItem>
-                <Separator></Separator>
-                <MenuItem Header="Exit"></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Game">
-                <MenuItem Header="World Map" Command="{Binding MainMenuVM.WorldMapCommand}"></MenuItem>
-                <MenuItem Header="Gym"></MenuItem>
-                <MenuItem Header="Fighter"></MenuItem>
-                <MenuItem Header="Mon"></MenuItem>
-            </MenuItem>
-            
-            <MenuItem Header="_About">
-                
-            </MenuItem>
-        </Menu>-->
-        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+        <StackPanel Visibility="{Binding HUDVisibility}" DockPanel.Dock="Top" Orientation="Horizontal">
             <Button ToolTip="World Map" Content="{StaticResource worldImage}" Command="{Binding MainMenuVM.WorldMapCommand}" Width="32" Height="32"></Button>
             <Button ToolTip="Home Gym" Content="{StaticResource homeImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>
             <Button ToolTip="Fighter Roster" Content="{StaticResource rosterImage}" Command="{Binding MainMenuVM.HomeGymCommand}" Width="32" Height="32"></Button>

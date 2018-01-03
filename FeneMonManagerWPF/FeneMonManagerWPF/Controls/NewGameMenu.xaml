@@ -5,8 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FeneMonManagerWPF"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Label Foreground="White" FontSize="25">Starting a new game...</Label>
-    </Grid>
+             d:DesignHeight="300" d:DesignWidth="300" FontSize="28">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Bottom">
+            <Button Command="{Binding StartNewGameCommand}">Start!</Button>
+            <Button Command="{Binding MainViewModel.BackToMainMenuCommand}">Back to Main Menu</Button>
+        </StackPanel>
+
+        
+        <StackPanel Orientation="Vertical">
+            <Label Foreground="White">Choose a Type</Label>
+            <ComboBox ItemsSource="{Binding StatList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedStat}"></ComboBox>
+
+            <Label Foreground="White">Choose a Stat</Label>
+            <ComboBox ItemsSource="{Binding TypeList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedType}"></ComboBox>            
+        </StackPanel>
+        
+
+    </DockPanel>
 </UserControl>

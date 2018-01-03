@@ -3,6 +3,10 @@
         If worldZone1.DataContext Is Nothing Then
             Dim wmap As World = CType(Me.DataContext, WorldMapViewModel).WorldMap
 
+            If wmap Is Nothing Then
+                Exit Sub
+            End If
+
             Dim zoneCount As Integer = 0
             If wmap.WorldZones IsNot Nothing Then
                 zoneCount = wmap.WorldZones.Count

@@ -36,4 +36,13 @@
         Male
     End Enum
 
+    Public Enum MainStatTypeEnum
+        HP
+        Defense
+        Attack
+        SpecialDefense
+        SpecialAttack
+        Speed
+    End Enum
+
 End Class
