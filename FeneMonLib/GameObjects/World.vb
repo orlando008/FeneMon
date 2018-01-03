@@ -15,7 +15,12 @@ Public Class World
 
         'Generate World Zones for each affinity.
         For i = 0 To CType([Enum].GetValues(GetType(Enumerations.ElementEnum)), Integer()).Last
-            _worldZones.Add(New WorldZone(Me, i))
+            If i = 0 Then
+                'Setting the first world zone as the 'Home' of the player. Can add logic to change which zone is the home later
+                _worldZones.Add(New WorldZone(Me, i, True))
+            Else
+                _worldZones.Add(New WorldZone(Me, i, False))
+            End If
         Next
     End Sub
 
@@ -28,7 +33,13 @@ Public Class World
         CurrentDate = New Date(1999, 1, 1)
         'Generate World Zones for each affinity.
         For i = 0 To CType([Enum].GetValues(GetType(Enumerations.ElementEnum)), Integer()).Last
-            _worldZones.Add(New WorldZone(Me, i, GymsPerZone))
+            If i = 0 Then
+                'Setting the first world zone as the 'Home' of the player. Can add logic to change which zone is the home later
+                _worldZones.Add(New WorldZone(Me, i, True, GymsPerZone))
+            Else
+                _worldZones.Add(New WorldZone(Me, i, False, GymsPerZone))
+            End If
+
         Next
     End Sub
 
