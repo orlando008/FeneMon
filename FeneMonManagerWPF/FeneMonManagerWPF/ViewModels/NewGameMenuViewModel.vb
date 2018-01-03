@@ -41,6 +41,10 @@ Public Class NewGameMenuViewModel
 
     Private Sub StartNewGame()
         MainViewModel.CurrentWorld = New World()
+        Dim playersWorldZone As WorldZone = MainViewModel.CurrentWorld.WorldZones.FirstOrDefault(Function(w) w.Affinity = SelectedType)
+        If playersWorldZone IsNot Nothing Then
+            playersWorldZone.IsPlayerHome = True
+        End If
 
         RaiseNavigation(Enumerations.PageEnum.WorldMap)
     End Sub

@@ -18,6 +18,8 @@
             <Label Content="{Binding Affinity}"></Label>
             <Label>Number Of Zones</Label>
             <Label Content="{Binding Gym.GymZones.Count}"></Label>
+            <Label>Player Owned</Label>
+            <Label Content="{Binding IsPlayerHome}"></Label>
             <Button x:Name="btnViewGym">View Gym</Button>
         </DockPanel>
     </Border>

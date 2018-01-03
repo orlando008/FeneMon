@@ -15,7 +15,7 @@ Public Class WorldZone
     ''' <param name="parentWorld">The parent world of the World Zone.</param>
     ''' <param name="affinity">Affinity of the world zone.</param>
     ''' <param name="isPlayerHome">Determine whether or not the World Zone is the Players 'home zone'.</param>
-    Public Sub New(ByVal parentWorld As World, ByVal affinity As Enumerations.ElementEnum, ByVal isPlayerHome As Boolean)
+    Public Sub New(ByVal parentWorld As World, ByVal affinity As Enumerations.ElementEnum)
         _parentWorld = parentWorld
         _affinity = affinity
         _gym = New Gym(Me, 15)
@@ -29,7 +29,7 @@ Public Class WorldZone
     ''' <param name="affinity">Affinity of the world zone.</param>
     ''' <param name="isPlayerHome">Determine whether or not the World Zone is the Players 'home zone'.</param>
     ''' <param name="numGymZones">Number of Gym Zones in a Gym</param>
-    Public Sub New(ByVal parentWorld As World, ByVal affinity As Enumerations.ElementEnum, ByVal isPlayerHome As Boolean, ByVal numGymZones As Integer)
+    Public Sub New(ByVal parentWorld As World, ByVal affinity As Enumerations.ElementEnum, ByVal numGymZones As Integer)
         _parentWorld = parentWorld
         _affinity = affinity
         _gym = New Gym(Me, numGymZones)
