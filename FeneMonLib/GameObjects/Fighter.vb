@@ -6,6 +6,7 @@ Public Class Fighter
 
     Private _lastName As String
     Private _firstName As String
+    Private _gender As Enumerations.Gender
     Private _monsList As ObservableCollection(Of FeneMon)
     Private ReadOnly _parentGymZone As GymZone
 
@@ -15,7 +16,8 @@ Public Class Fighter
     ''' <param name="parentGymZone">The parent Gym Zone to the Fighter</param>
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String)
+    ''' <param name="gender">Gender of the Fighter</param>
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal gender As Enumerations.Gender)
         _monsList = New ObservableCollection(Of FeneMon)()
         _parentGymZone = parentGymZone
         _lastName = lastName
@@ -31,8 +33,9 @@ Public Class Fighter
     ''' <param name="parentGymZone">The parent Gym Zone to the Fighter</param>
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
+    ''' <param name="gender">Gender of the Fighter</param>
     ''' <param name="monsList">A list of Mons that belong to the fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal monsList As ObservableCollection(Of FeneMon))
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal gender As Enumerations.Gender, ByVal monsList As ObservableCollection(Of FeneMon))
         _lastName = lastName
         _firstName = _firstName
         _parentGymZone = parentGymZone
@@ -72,6 +75,15 @@ Public Class Fighter
         Get
             Return _parentGymZone
         End Get
+    End Property
+
+    Public Property Gender As Enumerations.Gender
+        Get
+            Return _gender
+        End Get
+        Set(value As Enumerations.Gender)
+            _gender = value
+        End Set
     End Property
 
 #End Region

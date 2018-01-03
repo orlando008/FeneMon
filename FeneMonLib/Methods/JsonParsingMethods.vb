@@ -6,8 +6,8 @@ Public Class JsonParsingMethods
     ''' <summary>
     ''' Get a Random Name for a Fighter
     ''' </summary>
-    ''' <returns>A Tuple of Strings. Item1 will contain the first name of the Fighter and Item2 will contain the last name.</returns>
-    Public Shared Function GetRandomFighterName() As Tuple(Of String, String)
+    ''' <returns>A Tuple of Strings. Item1 will contain the first name of the Fighter and Item2 will contain the last name. Item3 will be the gender of the Fighter.</returns>
+    Public Shared Function GetRandomFighterName() As Tuple(Of String, String, Enumerations.Gender)
         Dim firstNames As List(Of JSON_Names)
         Dim lastNames As List(Of JSON_Names)
 
@@ -26,7 +26,7 @@ Public Class JsonParsingMethods
         firstNameIndex = r.Next(0, firstNames.Count - 1)
         lastNameIndex = r.Next(0, lastNames.Count - 1)
 
-        Return New Tuple(Of String, String)(firstNames(firstNameIndex).Name, lastNames(lastNameIndex).Name)
+        Return New Tuple(Of String, String, Enumerations.Gender)(firstNames(firstNameIndex).Name, lastNames(lastNameIndex).Name, firstNames(firstNameIndex).Gender)
     End Function
 
     Public Shared Function GetRandomMon() As FeneMon
@@ -59,4 +59,6 @@ End Class
 Public Class JSON_Names
     <JsonProperty("Name")>
     Public Name As String
+    <JsonProperty("Gender")>
+    Public Gender As Enumerations.Gender
 End Class

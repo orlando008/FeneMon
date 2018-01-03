@@ -30,4 +30,10 @@
         Physical
         Special
     End Enum
+
+    Public Enum Gender
+        Female
+        Male
+    End Enum
+
 End Class

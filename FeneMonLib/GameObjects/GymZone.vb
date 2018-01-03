@@ -19,8 +19,8 @@ Public Class GymZone
         _isBossZone = isBossZone
         _isUnlocked = isUnlocked
 
-        Dim fighterName As Tuple(Of String, String) = JsonParsingMethods.GetRandomFighterName()
-        _fighter = New Fighter(Me, fighterName.Item1, fighterName.Item2)
+        Dim fighterName As Tuple(Of String, String, Enumerations.Gender) = JsonParsingMethods.GetRandomFighterName()
+        _fighter = New Fighter(Me, fighterName.Item1, fighterName.Item2, fighterName.Item3)
     End Sub
 
     Public Sub New(ByVal parentGym As Gym, fighter As Fighter)
