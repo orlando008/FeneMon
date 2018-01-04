@@ -5,9 +5,9 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonManagerWPF", "FeneMonManagerWPF\FeneMonManagerWPF.vbproj", "{5F8B8E4B-E6C6-419E-86B8-64E4EE8E3754}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLib", "..\FeneMonLib\FeneMonLib.vbproj", "{07324C90-8343-4329-9AEC-EED7DDB890D6}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLib", "FeneMonLib\FeneMonLib.vbproj", "{07324C90-8343-4329-9AEC-EED7DDB890D6}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLibTests", "..\FeneMonLibTests\FeneMonLibTests.vbproj", "{BD8E103E-7271-42BA-9B7B-76F8D2327558}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FeneMonLibTests", "FeneMonLibTests\FeneMonLibTests.vbproj", "{BD8E103E-7271-42BA-9B7B-76F8D2327558}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -195,7 +195,7 @@
     <Resource Include="Images\world.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\FeneMonLib\FeneMonLib.vbproj">
+    <ProjectReference Include="..\FeneMonLib\FeneMonLib.vbproj">
       <Project>{07324c90-8343-4329-9aec-eed7ddb890d6}</Project>
       <Name>FeneMonLib</Name>
     </ProjectReference>
