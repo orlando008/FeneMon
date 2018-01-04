@@ -33,7 +33,7 @@
         Assert.IsNull(match.PromptChallengerNextMon)
     End Sub
 
-    <TestMethod> Public Sub SimulatedMatch_FightersCycle_On0HP()
+    <TestMethod> Public Sub SimulatedMatch_FightersDone_On0HP()
 
         Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
         Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
@@ -58,6 +58,73 @@
         Dim desiredLogs As New List(Of String)
         desiredLogs.Add("Firemon did 30 damage to Watermon")
         desiredLogs.Add("Watermon fainted!")
+
+        AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
+    End Sub
+
+    <TestMethod> Public Sub SimulatedMatch_FightersCycle_On0HP()
+
+        Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+
+        Dim logger As New TestLogger
+
+        challenger.MonsList.Clear()
+        challenger.MonsList.Add(New FeneMon("Firemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Flamemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+
+        defender.MonsList.Clear()
+        defender.MonsList.Add(New FeneMon("Watermon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Liquidmon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+
+        Dim match As MatchStateBase = New SimulatedMatchState
+        match.StartMatch(challenger, defender, logger)
+
+        Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
+        Assert.AreNotEqual(0, challenger.MonsList.First.CurrentHealth)
+
+        Dim desiredLogs As New List(Of String)
+        desiredLogs.Add("Firemon did 30 damage to Watermon")
+        desiredLogs.Add("Watermon fainted!")
+        desiredLogs.Add("Firemon did 30 damage to Liquidmon")
+        desiredLogs.Add("Liquidmon fainted!")
+
+        AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
+    End Sub
+
+    <TestMethod> Public Sub SimulatedMatch_FightersCycle_On0HP_Challenger()
+
+        Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+
+        Dim logger As New TestLogger
+
+        challenger.MonsList.Clear()
+        challenger.MonsList.Add(New FeneMon("Firemon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Flamemon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+
+        defender.MonsList.Clear()
+        defender.MonsList.Add(New FeneMon("Watermon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Liquidmon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+
+        Dim match As MatchStateBase = New SimulatedMatchState
+        match.StartMatch(challenger, defender, logger)
+
+        Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
+        Assert.AreEqual(0, defender.MonsList.Last.CurrentHealth)
+        Assert.AreEqual(0, challenger.MonsList.First.CurrentHealth)
+        Assert.AreNotEqual(0, challenger.MonsList.Last.CurrentHealth)
+
+        Dim desiredLogs As New List(Of String)
+        desiredLogs.Add("Firemon did 8 damage to Watermon")
+        desiredLogs.Add("Watermon did 5 damage to Firemon")
+        desiredLogs.Add("Firemon did 10 damage to Watermon")
+        desiredLogs.Add("Watermon fainted!")
+        desiredLogs.Add("Firemon did 8 damage to Liquidmon")
+        desiredLogs.Add("Liquidmon did 5 damage to Firemon")
+        desiredLogs.Add("Firemon fainted!")
+        desiredLogs.Add("Flamemon did 8 damage to Liquidmon")
+        desiredLogs.Add("Liquidmon fainted!")
 
         AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
     End Sub
