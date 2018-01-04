@@ -17,6 +17,6 @@ Public Class SimulatedMatchState
 
     Private Function SelectNextUnfaintedFeneMon(mons As IList(Of FeneMon)) As FeneMon
         ' assume the next mon in line is good enough
-        Return mons.First(Function(m) m.CurrentHealth > 0)
+        Return mons.FirstOrDefault(Function(m) m.CurrentHealth > 0)
     End Function
 End Class
