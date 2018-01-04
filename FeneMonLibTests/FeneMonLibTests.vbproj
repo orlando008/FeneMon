@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="AssertHelpers.vb" />
     <Compile Include="BattleTests.vb" />
+    <Compile Include="MatchTests.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
