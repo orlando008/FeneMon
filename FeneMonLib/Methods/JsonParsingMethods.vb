@@ -11,12 +11,12 @@ Public Class JsonParsingMethods
         Dim firstNames As List(Of JSON_Names)
         Dim lastNames As List(Of JSON_Names)
 
-        Using reader As StreamReader = New StreamReader("..\..\..\..\FeneMonLib\JsonData\FighterFirstNames.json")
+        Using reader As StreamReader = New StreamReader("..\..\..\FeneMonLib\JsonData\FighterFirstNames.json")
             Dim jsonFirstNames As String = reader.ReadToEnd
             firstNames = JsonConvert.DeserializeObject(Of List(Of JSON_Names))(jsonFirstNames)
         End Using
 
-        Using readerLastNames As StreamReader = New StreamReader("..\..\..\..\FeneMonLib\JsonData\FighterLastNames.json")
+        Using readerLastNames As StreamReader = New StreamReader("..\..\..\FeneMonLib\JsonData\FighterLastNames.json")
             Dim jsonLastNames As String = readerLastNames.ReadToEnd
             lastNames = JsonConvert.DeserializeObject(Of List(Of JSON_Names))(jsonLastNames)
         End Using
@@ -32,7 +32,7 @@ Public Class JsonParsingMethods
     Public Shared Function GetRandomMon() As FeneMon
         Dim monList As List(Of FeneMon)
 
-        Using reader As StreamReader = New StreamReader("..\..\..\..\FeneMonLib\JsonData\FeneMon.json")
+        Using reader As StreamReader = New StreamReader("..\..\..\FeneMonLib\JsonData\FeneMon.json")
             Dim jsonMons As String = reader.ReadToEnd
             monList = JsonConvert.DeserializeObject(Of List(Of FeneMon))(jsonMons)
         End Using
@@ -45,7 +45,7 @@ Public Class JsonParsingMethods
     Public Shared Function GetAllMons() As List(Of FeneMon)
         Dim monList As List(Of FeneMon)
 
-        Using reader As StreamReader = New StreamReader("..\..\..\..\FeneMonLib\JsonData\FeneMon.json")
+        Using reader As StreamReader = New StreamReader("..\..\..\FeneMonLib\JsonData\FeneMon.json")
             Dim jsonMons As String = reader.ReadToEnd
             monList = JsonConvert.DeserializeObject(Of List(Of FeneMon))(jsonMons)
         End Using
