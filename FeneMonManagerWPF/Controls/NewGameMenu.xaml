@@ -29,6 +29,9 @@
 
                 <Label Foreground="White">Choose Gender</Label>
                 <ComboBox ItemsSource="{Binding GenderList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedGender}"></ComboBox>
+                
+                <Label Foreground="White">Choose Personality</Label>
+                <ComboBox ItemsSource="{Binding PersonalityList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedPersonality}"></ComboBox>
 
                 <Label Foreground="White">First Name</Label>
                 <TextBox Text="{Binding FirstName}"></TextBox>

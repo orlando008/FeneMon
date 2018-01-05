@@ -20,7 +20,10 @@ Public Class GymZone
         _isUnlocked = isUnlocked
 
         Dim fighterName As Tuple(Of String, String, Enumerations.Gender) = JsonParsingMethods.GetRandomFighterName()
-        _fighter = New Fighter(Me, fighterName.Item1, fighterName.Item2, fighterName.Item3)
+
+        Dim r As Random = New Random(Guid.NewGuid().GetHashCode)
+        Dim fighterPersonality As Enumerations.Personality = r.Next(0, CType([Enum].GetValues(GetType(Enumerations.Personality)), Integer()).Last)
+        _fighter = New Fighter(Me, fighterName.Item1, fighterName.Item2, fighterName.Item3, fighterPersonality)
     End Sub
 
     Public Sub New(ByVal parentGym As Gym, fighter As Fighter)

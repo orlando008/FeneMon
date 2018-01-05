@@ -10,9 +10,11 @@ Public Class NewGameMenuViewModel
     Private _selectedStat As Enumerations.MainStatTypeEnum
     Private _mainViewModel As MainViewModel
     Private _genderList As New ObservableCollection(Of ComboBoxListItem)
+    Private _personalityList As New ObservableCollection(Of ComboBoxListItem)
     Private _firstName As String
     Private _lastName As String
     Private _selectedGender As Enumerations.Gender
+    Private _selectedPersonality As Enumerations.Personality
 
     Public Sub New(ByRef mainVM As MainViewModel)
         For Each e As Enumerations.ElementEnum In [Enum].GetValues(GetType(Enumerations.ElementEnum))
@@ -25,6 +27,10 @@ Public Class NewGameMenuViewModel
 
         For Each e As Enumerations.Gender In [Enum].GetValues(GetType(Enumerations.Gender))
             _genderList.Add(New ComboBoxListItem([Enum].GetName(GetType(Enumerations.Gender), e), e))
+        Next
+
+        For Each e As Enumerations.Personality In [Enum].GetValues(GetType(Enumerations.Personality))
+            _personalityList.Add(New ComboBoxListItem([Enum].GetName(GetType(Enumerations.Personality), e), e))
         Next
 
         _selectedGender = Enumerations.Gender.Male
@@ -54,7 +60,7 @@ Public Class NewGameMenuViewModel
         Dim playersWorldZone As WorldZone = MainViewModel.CurrentWorld.WorldZones.FirstOrDefault(Function(w) w.Affinity = SelectedType)
         If playersWorldZone IsNot Nothing Then
             playersWorldZone.IsPlayerHome = True
-            playersWorldZone.Gym.GymZones(0).Fighter = New Fighter(playersWorldZone.Gym.GymZones(0), LastName, FirstName, SelectedGender)
+            playersWorldZone.Gym.GymZones(0).Fighter = New Fighter(playersWorldZone.Gym.GymZones(0), FirstName, LastName, SelectedGender, SelectedPersonality)
         End If
 
         RaiseNavigation(Enumerations.PageEnum.WorldMap)
@@ -116,6 +122,15 @@ Public Class NewGameMenuViewModel
         End Set
     End Property
 
+    Public Property PersonalityList As ObservableCollection(Of ComboBoxListItem)
+        Get
+            Return _personalityList
+        End Get
+        Set(value As ObservableCollection(Of ComboBoxListItem))
+            _personalityList = value
+        End Set
+    End Property
+
     Public Property FirstName As String
         Get
             Return _firstName
@@ -140,6 +155,15 @@ Public Class NewGameMenuViewModel
         End Get
         Set(value As Enumerations.Gender)
             _selectedGender = value
+        End Set
+    End Property
+
+    Public Property SelectedPersonality As Enumerations.Personality
+        Get
+            Return _selectedPersonality
+        End Get
+        Set(value As Enumerations.Personality)
+            _selectedPersonality = value
         End Set
     End Property
 End Class

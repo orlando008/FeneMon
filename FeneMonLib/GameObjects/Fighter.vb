@@ -7,6 +7,7 @@ Public Class Fighter
     Private _lastName As String
     Private _firstName As String
     Private _gender As Enumerations.Gender
+    Private _personality As Enumerations.Personality
     Private _monsList As ObservableCollection(Of FeneMon)
     Private ReadOnly _parentGymZone As GymZone
 
@@ -17,11 +18,13 @@ Public Class Fighter
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
     ''' <param name="gender">Gender of the Fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender)
+    ''' <param name="personality">Gender of the Fighter</param>
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender, ByVal personality As Enumerations.Personality)
         _monsList = New ObservableCollection(Of FeneMon)()
         _parentGymZone = parentGymZone
         _lastName = lastName
         _firstName = firstName
+        _personality = personality
 
         'Add a random mon to the Fighters list of Mons to start with
         _monsList.Add(JsonParsingMethods.GetRandomMon())
@@ -34,11 +37,14 @@ Public Class Fighter
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
     ''' <param name="gender">Gender of the Fighter</param>
+    ''' <param name="personality">Gender of the Fighter</param>
     ''' <param name="monsList">A list of Mons that belong to the fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender, ByVal monsList As ObservableCollection(Of FeneMon))
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender, ByVal personality As Enumerations.Personality, ByVal monsList As ObservableCollection(Of FeneMon))
         _lastName = lastName
         _firstName = _firstName
+        _gender = gender
         _parentGymZone = parentGymZone
+        _personality = personality
         _monsList = monsList
     End Sub
 
