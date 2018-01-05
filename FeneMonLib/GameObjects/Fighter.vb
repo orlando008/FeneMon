@@ -17,7 +17,7 @@ Public Class Fighter
     ''' <param name="lastName">Last Name of the Fighter</param>
     ''' <param name="firstName">First Name of the Fighter</param>
     ''' <param name="gender">Gender of the Fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal gender As Enumerations.Gender)
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender)
         _monsList = New ObservableCollection(Of FeneMon)()
         _parentGymZone = parentGymZone
         _lastName = lastName
@@ -35,7 +35,7 @@ Public Class Fighter
     ''' <param name="firstName">First Name of the Fighter</param>
     ''' <param name="gender">Gender of the Fighter</param>
     ''' <param name="monsList">A list of Mons that belong to the fighter</param>
-    Public Sub New(ByVal parentGymZone As GymZone, ByVal lastName As String, ByVal firstName As String, ByVal gender As Enumerations.Gender, ByVal monsList As ObservableCollection(Of FeneMon))
+    Public Sub New(ByVal parentGymZone As GymZone, ByVal firstName As String, ByVal lastName As String, ByVal gender As Enumerations.Gender, ByVal monsList As ObservableCollection(Of FeneMon))
         _lastName = lastName
         _firstName = _firstName
         _parentGymZone = parentGymZone
@@ -91,6 +91,21 @@ Public Class Fighter
             Return FirstName & " " & LastName
         End Get
     End Property
+#End Region
+
+#Region "Private Methods"
+
+    Private Function ChoseFeneMove(ByVal enemyMon As FeneMon) As FeneMonMove
+        'Will there be an Active Mon in the mons list like in PokeMon?
+        'Just going to start with the first mon being the active one for now.
+        Dim chosenMon As FeneMon = _monsList(0)
+
+        'most powerful move
+        Dim chosenMove As FeneMonMove = chosenMon.Moves.ToList.OrderBy(Function(x) x.Power)
+
+        Return chosenMove
+    End Function
+
 #End Region
 
 End Class
