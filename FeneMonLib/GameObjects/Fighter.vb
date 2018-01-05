@@ -86,6 +86,11 @@ Public Class Fighter
         End Set
     End Property
 
+    Public ReadOnly Property FormattedName As String
+        Get
+            Return FirstName & " " & LastName
+        End Get
+    End Property
 #End Region
 
 End Class

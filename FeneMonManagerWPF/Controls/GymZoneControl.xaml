@@ -14,15 +14,9 @@
             </LinearGradientBrush>
         </Border.Background>
         <DockPanel LastChildFill="True">
-            <StackPanel Orientation="Vertical">
-                <Label>Is Boss Zone?</Label>
-                <Label Content="{Binding IsBossZone}"></Label>
-                <Label>Is Unlocked?</Label>
-                <Label Content="{Binding IsUnlocked}"></Label>
-                <Label>First Name:</Label>
-                <Label Content="{Binding Fighter.FirstName}"></Label>
-                <Label>Last Name:</Label>
-                <Label Content="{Binding Fighter.LastName}"></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Fighter:</Label>
+                <Label Content="{Binding Fighter.FormattedName}"></Label>
             </StackPanel>
 
         </DockPanel>        

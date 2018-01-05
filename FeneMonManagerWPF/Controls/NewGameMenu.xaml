@@ -7,19 +7,42 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300" FontSize="28">
     <DockPanel LastChildFill="True">
-        <StackPanel DockPanel.Dock="Bottom">
-            <Button Command="{Binding StartNewGameCommand}">Start!</Button>
-            <Button Command="{Binding MainViewModel.BackToMainMenuCommand}">Back to Main Menu</Button>
-        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Vertical">
+                <Label Foreground="White">Choose a Type</Label>
+                <ComboBox ItemsSource="{Binding StatList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedStat}"></ComboBox>
+
+                <Label Foreground="White">Choose a Stat</Label>
+                <ComboBox ItemsSource="{Binding TypeList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedType}"></ComboBox>
+
+                <Label Foreground="White">Choose Gender</Label>
+                <ComboBox ItemsSource="{Binding GenderList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedGender}"></ComboBox>
+
+                <Label Foreground="White">First Name</Label>
+                <TextBox Text="{Binding FirstName}"></TextBox>
+
+                <Label Foreground="White">Last Name</Label>
+                <TextBox Text="{Binding LastName}"></TextBox>
+
+                <Button Margin="10" Padding="10" Width="350" Command="{Binding StartNewGameCommand}">Start!</Button>
+                <Button Margin="10" Padding="10" Width="350" Command="{Binding MainViewModel.BackToMainMenuCommand}">Back to Main Menu</Button>
+            </StackPanel>
+          
+        </Grid>
         
-        <StackPanel Orientation="Vertical">
-            <Label Foreground="White">Choose a Type</Label>
-            <ComboBox ItemsSource="{Binding StatList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedStat}"></ComboBox>
 
-            <Label Foreground="White">Choose a Stat</Label>
-            <ComboBox ItemsSource="{Binding TypeList}" DisplayMemberPath="Text" SelectedValuePath="Value" SelectedValue="{Binding SelectedType}"></ComboBox>            
-        </StackPanel>
         
 
     </DockPanel>

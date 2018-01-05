@@ -8,7 +8,10 @@
              d:DesignHeight="300" d:DesignWidth="300"
              Background="GhostWhite">
     <DockPanel LastChildFill="True">
-        <Label DockPanel.Dock="Top" FontSize="25" Content="The X Gym"></Label>
+        
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock FontSize="25" Text="{Binding ParentWorldMapVM.Gym.GymName}"></TextBlock>
+        </StackPanel>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"></ColumnDefinition>

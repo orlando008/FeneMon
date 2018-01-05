@@ -9,6 +9,10 @@ Public Class NewGameMenuViewModel
     Private _selectedType As Enumerations.ElementEnum
     Private _selectedStat As Enumerations.MainStatTypeEnum
     Private _mainViewModel As MainViewModel
+    Private _genderList As New ObservableCollection(Of ComboBoxListItem)
+    Private _firstName As String
+    Private _lastName As String
+    Private _selectedGender As Enumerations.Gender
 
     Public Sub New(ByRef mainVM As MainViewModel)
         For Each e As Enumerations.ElementEnum In [Enum].GetValues(GetType(Enumerations.ElementEnum))
@@ -18,6 +22,12 @@ Public Class NewGameMenuViewModel
         For Each e As Enumerations.MainStatTypeEnum In [Enum].GetValues(GetType(Enumerations.MainStatTypeEnum))
             _statList.Add(New ComboBoxListItem([Enum].GetName(GetType(Enumerations.MainStatTypeEnum), e), e))
         Next
+
+        For Each e As Enumerations.Gender In [Enum].GetValues(GetType(Enumerations.Gender))
+            _genderList.Add(New ComboBoxListItem([Enum].GetName(GetType(Enumerations.Gender), e), e))
+        Next
+
+        _selectedGender = Enumerations.Gender.Male
 
         MainViewModel = mainVM
     End Sub
@@ -44,6 +54,7 @@ Public Class NewGameMenuViewModel
         Dim playersWorldZone As WorldZone = MainViewModel.CurrentWorld.WorldZones.FirstOrDefault(Function(w) w.Affinity = SelectedType)
         If playersWorldZone IsNot Nothing Then
             playersWorldZone.IsPlayerHome = True
+            playersWorldZone.Gym.GymZones(0).Fighter = New Fighter(playersWorldZone.Gym.GymZones(0), LastName, FirstName, SelectedGender)
         End If
 
         RaiseNavigation(Enumerations.PageEnum.WorldMap)
@@ -93,6 +104,42 @@ Public Class NewGameMenuViewModel
         End Get
         Set(value As MainViewModel)
             _mainViewModel = value
+        End Set
+    End Property
+
+    Public Property GenderList As ObservableCollection(Of ComboBoxListItem)
+        Get
+            Return _genderList
+        End Get
+        Set(value As ObservableCollection(Of ComboBoxListItem))
+            _genderList = value
+        End Set
+    End Property
+
+    Public Property FirstName As String
+        Get
+            Return _firstName
+        End Get
+        Set(value As String)
+            _firstName = value
+        End Set
+    End Property
+
+    Public Property LastName As String
+        Get
+            Return _lastName
+        End Get
+        Set(value As String)
+            _lastName = value
+        End Set
+    End Property
+
+    Public Property SelectedGender As Enumerations.Gender
+        Get
+            Return _selectedGender
+        End Get
+        Set(value As Enumerations.Gender)
+            _selectedGender = value
         End Set
     End Property
 End Class

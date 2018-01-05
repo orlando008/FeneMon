@@ -65,6 +65,21 @@ Public Class Gym
         End Get
     End Property
 
+    Public ReadOnly Property GymName As String
+        Get
+            If _parentWorldZone.IsPlayerHome Then
+                Return "The " & [Enum].GetName(GetType(Enumerations.ElementEnum), _parentWorldZone.Affinity) & " Gym (Home)"
+            Else
+                Dim bossZone As GymZone = _parentWorldZone.Gym.GymZones.FirstOrDefault(Function(f) f.IsBossZone)
+                Dim bossName As String = ""
+                If bossZone IsNot Nothing Then
+                    bossName = bossZone.Fighter.FormattedName
+                End If
+                Return "The " & [Enum].GetName(GetType(Enumerations.ElementEnum), _parentWorldZone.Affinity) & " Gym " & If(bossName <> "", "(" & bossName & ")", "")
+            End If
+        End Get
+    End Property
+
 #End Region
 
 End Class
