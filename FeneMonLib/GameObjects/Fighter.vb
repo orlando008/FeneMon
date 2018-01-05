@@ -91,6 +91,16 @@ Public Class Fighter
             Return FirstName & " " & LastName
         End Get
     End Property
+
+    Public ReadOnly Property PowerLevel As Integer
+        Get
+            If _monsList Is Nothing OrElse _monsList.Count = 0 Then
+                Return 0
+            Else
+                Return _monsList.Sum(Function(f) f.BaseStats.PowerLevel)
+            End If
+        End Get
+    End Property
 #End Region
 
 #Region "Private Methods"

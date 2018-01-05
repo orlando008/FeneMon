@@ -155,6 +155,12 @@ Public Class FeneMon
         End Set
     End Property
 
+    Public ReadOnly Property BaseStats As FeneMonStats
+        Get
+            Return _baseStats
+        End Get
+    End Property
+
     Public Sub ResetEffectiveStats()
         Me.CurrentAttack = Me.Attack
         Me.CurrentDefense = Me.Defense

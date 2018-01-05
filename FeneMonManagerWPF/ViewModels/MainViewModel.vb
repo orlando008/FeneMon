@@ -20,6 +20,12 @@ Public Class MainViewModel
         End Set
     End Property
 
+    Public ReadOnly Property CurrentWorldViewModel As WorldMapViewModel
+        Get
+            Return _pageViewModels(Enumerations.PageEnum.WorldMap)
+        End Get
+    End Property
+
     Public Property CurrentPageViewModel As MenuViewModelBase
         Get
             Return _currentPageViewModel
@@ -44,7 +50,7 @@ Public Class MainViewModel
 
     Public Sub New()
         _pageViewModels = New Dictionary(Of Enumerations.PageEnum, MenuViewModelBase)()
-        _pageViewModels.Add(Enumerations.PageEnum.MainMenu, New MainMenuViewModel())
+        _pageViewModels.Add(Enumerations.PageEnum.MainMenu, New MainMenuViewModel(Me))
         MainMenuVM = _pageViewModels(Enumerations.PageEnum.MainMenu)
 
         _pageViewModels.Add(Enumerations.PageEnum.LoadGame, New LoadGameMenuViewModel())

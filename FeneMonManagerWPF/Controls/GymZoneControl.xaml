@@ -14,9 +14,21 @@
             </LinearGradientBrush>
         </Border.Background>
         <DockPanel LastChildFill="True">
-            <StackPanel Orientation="Horizontal">
-                <Label>Fighter:</Label>
-                <Label Content="{Binding Fighter.FormattedName}"></Label>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label>Fighter:</Label>
+                    <Label Content="{Binding Fighter.FormattedName}"></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Power Level:</Label>
+                    <Label Content="{Binding Fighter.PowerLevel}"></Label>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Mons Owned:</Label>
+                    <Label Content="{Binding Fighter.MonsList.Count}"></Label>
+                </StackPanel>
             </StackPanel>
 
         </DockPanel>        

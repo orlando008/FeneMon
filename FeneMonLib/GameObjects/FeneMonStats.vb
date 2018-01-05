@@ -69,4 +69,10 @@
             _specialDefense = value
         End Set
     End Property
+
+    Public ReadOnly Property PowerLevel As Integer
+        Get
+            Return Health + Attack + SpecialAttack + Speed + Defense + SpecialDefense
+        End Get
+    End Property
 End Class

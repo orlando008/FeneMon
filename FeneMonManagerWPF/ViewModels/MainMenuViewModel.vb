@@ -2,6 +2,12 @@
 
 Public Class MainMenuViewModel
     Inherits MenuViewModelBase
+    Private _mainVM As MainViewModel
+
+    Public Sub New(ByRef mainVM As MainViewModel)
+        MyBase.New()
+        _mainVM = mainVM
+    End Sub
 
 #Region "New Game Command"
 
@@ -90,6 +96,7 @@ Public Class MainMenuViewModel
     End Function
 
     Private Sub HomeGym()
+        _mainVM.CurrentWorldViewModel.Gym = _mainVM.CurrentWorld.WorldZones.FirstOrDefault(Function(f) f.IsPlayerHome).Gym
         RaiseNavigation(Enumerations.PageEnum.Gym)
     End Sub
 #End Region
