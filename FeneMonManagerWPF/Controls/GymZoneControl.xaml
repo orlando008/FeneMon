@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:FeneMonManagerWPF"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    
     <Border BorderThickness="1" BorderBrush="#FFABD5FF">
         <Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -25,10 +26,57 @@
                     <Label Content="{Binding Fighter.PowerLevel}"></Label>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal">
-                    <Label>Mons Owned:</Label>
-                    <Label Content="{Binding Fighter.MonsList.Count}"></Label>
-                </StackPanel>
+                <DockPanel LastChildFill="True">
+                    <Label DockPanel.Dock="Top">Mons:</Label>
+                    <ItemsControl ItemsSource="{Binding Fighter.MonsList}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <WrapPanel>
+                                    <Border BorderBrush="Black" BorderThickness="1" Margin="3" Padding="2">
+                                        <StackPanel Orientation="Vertical">
+                                            <TextBlock Text="{Binding Name}"></TextBlock>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Level: 1"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Health: "></TextBlock>
+                                                <TextBlock Text="{Binding MaxHealth}"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Speed: "></TextBlock>
+                                                <TextBlock Text="{Binding Speed}"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Attack: "></TextBlock>
+                                                <TextBlock Text="{Binding Attack}"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Defense: "></TextBlock>
+                                                <TextBlock Text="{Binding Defense}"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Spec. Attack: "></TextBlock>
+                                                <TextBlock Text="{Binding SpecialAttack}"></TextBlock>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Spec. Defense: "></TextBlock>
+                                                <TextBlock Text="{Binding SpecialDefense}"></TextBlock>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                        
+                                </WrapPanel>
+                                
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    
+                </DockPanel>
             </StackPanel>
 
         </DockPanel>        

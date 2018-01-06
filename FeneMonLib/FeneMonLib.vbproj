@@ -94,7 +94,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Methods\RandomizationMethods.vb" />
+    <Compile Include="Methods\RandomizationModule.vb" />
     <Compile Include="Methods\SaveMethods.vb" />
     <Compile Include="GameObjects\GymZone.vb" />
     <Compile Include="GameObjects\World.vb" />

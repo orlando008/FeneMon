@@ -161,6 +161,12 @@ Public Class FeneMon
         End Get
     End Property
 
+    Public ReadOnly Property ElementName As String
+        Get
+            Return [Enum].GetName(GetType(Enumerations.ElementEnum), Me.Element)
+        End Get
+    End Property
+
     Public Sub ResetEffectiveStats()
         Me.CurrentAttack = Me.Attack
         Me.CurrentDefense = Me.Defense

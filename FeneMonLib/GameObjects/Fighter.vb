@@ -27,7 +27,8 @@ Public Class Fighter
         _personality = personality
 
         'Add a random mon to the Fighters list of Mons to start with
-        _monsList.Add(JsonParsingMethods.GetRandomMon())
+        _monsList.Add(GetRandomMon(1))
+        _monsList.Add(GetRandomMon(1))
     End Sub
 
     ''' <summary>
