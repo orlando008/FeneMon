@@ -15,8 +15,8 @@
 
     Private Shared Function CalculateDamage(attack As FeneMonMove, attacker As FeneMon, defender As FeneMon) As Integer
 
-        Dim attackValue As Integer = GetEffectiveAttackAttributeValue(attack.DamageType, attacker)
-        Dim defenseValue As Integer = GetEffectiveDefenseAttributeValue(attack.DamageType, defender)
+        Dim attackValue As Integer = GetEffectiveAttackAttributeValue(attack.MoveKind, attacker)
+        Dim defenseValue As Integer = GetEffectiveDefenseAttributeValue(attack.MoveKind, defender)
         Dim STAB As Double = GetSameTypeAttackBonus(attack.Element, attacker.Element)
 
         ' can probably factor in more modifiers and constants
@@ -25,22 +25,22 @@
 
     End Function
 
-    Private Shared Function GetEffectiveAttackAttributeValue(attackType As Enumerations.DamageTypeEnum, attacker As FeneMon) As Integer
+    Private Shared Function GetEffectiveAttackAttributeValue(attackType As Enumerations.MoveKindEnum, attacker As FeneMon) As Integer
         Select Case attackType
-            Case Enumerations.DamageTypeEnum.Physical
+            Case Enumerations.MoveKindEnum.Physical
                 Return attacker.CurrentAttack
-            Case Enumerations.DamageTypeEnum.Special
+            Case Enumerations.MoveKindEnum.Special
                 Return attacker.CurrentSpecialAttack
             Case Else
                 Throw New NotImplementedException
         End Select
     End Function
 
-    Private Shared Function GetEffectiveDefenseAttributeValue(attackType As Enumerations.DamageTypeEnum, defender As FeneMon) As Integer
+    Private Shared Function GetEffectiveDefenseAttributeValue(attackType As Enumerations.MoveKindEnum, defender As FeneMon) As Integer
         Select Case attackType
-            Case Enumerations.DamageTypeEnum.Physical
+            Case Enumerations.MoveKindEnum.Physical
                 Return defender.CurrentDefense
-            Case Enumerations.DamageTypeEnum.Special
+            Case Enumerations.MoveKindEnum.Special
                 Return defender.CurrentSpecialDefense
             Case Else
                 Throw New NotImplementedException
@@ -63,11 +63,7 @@
 
     ' returns IList to reduce dependancy on System.Linq
     Public Shared Function ResolveActionOrder(actions As IEnumerable(Of BattleAction)) As IList(Of BattleAction)
-        Return actions.OrderByDescending(Function(a) CalculateActionSpeed(a)).ToList
-    End Function
-
-    Private Shared Function CalculateActionSpeed(action As BattleAction) As Integer
-        Return action.User.CurrentSpeed * action.Move.SpeedFactor
+        Return actions.OrderBy(Function(a) a.Move.Priority).ThenByDescending(Function(a) a.User.CurrentSpeed).ToList
     End Function
 
 End Class

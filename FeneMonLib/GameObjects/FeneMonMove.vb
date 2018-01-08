@@ -7,15 +7,19 @@ Public Class FeneMonMove
     Private _name As String
     Private _element As Enumerations.ElementEnum
     Private _power As Integer
-    Private _damageType As Enumerations.DamageTypeEnum
-    Private _speedFactor As Integer
+    Private _moveKind As Enumerations.MoveKindEnum
+    Private _accuracy As Decimal
+    Private _priority As Integer
+    Private _enduranceRequirement As Integer
 
-    Public Sub New(name As String, element As Enumerations.ElementEnum, power As Integer, damageType As Enumerations.DamageTypeEnum, speedFactor As Integer)
+    Public Sub New(name As String, element As Enumerations.ElementEnum, power As Integer, moveKind As Enumerations.MoveKindEnum, accuracy As Decimal, priority As Integer, enduranceRequirement As Integer)
         Me.Name = name
         Me.Element = element
         Me.Power = power
-        Me.DamageType = damageType
-        Me.SpeedFactor = speedFactor
+        Me.MoveKind = moveKind
+        Me.Accuracy = accuracy
+        Me.Priority = priority
+        Me.EnduranceRequirement = enduranceRequirement
     End Sub
 
     <JsonProperty("Name")>
@@ -49,22 +53,39 @@ Public Class FeneMonMove
     End Property
 
     <JsonProperty("DamageType")>
-    Public Property DamageType As Enumerations.DamageTypeEnum
+    Public Property MoveKind As Enumerations.MoveKindEnum
         Get
-            Return _damageType
+            Return _moveKind
         End Get
-        Set(value As Enumerations.DamageTypeEnum)
-            _damageType = value
+        Set(value As Enumerations.MoveKindEnum)
+            _moveKind = value
         End Set
     End Property
 
-    <JsonProperty("SpeedFactor")>
-    Public Property SpeedFactor As Integer
+    Public Property Accuracy As Decimal
         Get
-            Return _speedFactor
+            Return _accuracy
+        End Get
+        Set(value As Decimal)
+            _accuracy = value
+        End Set
+    End Property
+
+    Public Property Priority As Integer
+        Get
+            Return _priority
         End Get
         Set(value As Integer)
-            _speedFactor = value
+            _priority = value
+        End Set
+    End Property
+
+    Public Property EnduranceRequirement As Integer
+        Get
+            Return _enduranceRequirement
+        End Get
+        Set(value As Integer)
+            _enduranceRequirement = value
         End Set
     End Property
 End Class

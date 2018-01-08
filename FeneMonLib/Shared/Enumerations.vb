@@ -26,9 +26,10 @@
         Water
     End Enum
 
-    Public Enum DamageTypeEnum
+    Public Enum MoveKindEnum
         Physical
         Special
+        Status
     End Enum
 
     Public Enum Gender
