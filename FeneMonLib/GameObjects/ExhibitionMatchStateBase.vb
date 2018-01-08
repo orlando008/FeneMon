@@ -1,6 +1,6 @@
 ﻿Imports FeneMonLib
 
-Public MustInherit Class MatchStateBase
+Public MustInherit Class ExhibitionMatchStateBase
 
     Private _challenger As Fighter
     Private _defender As Fighter

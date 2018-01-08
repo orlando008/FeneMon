@@ -1,7 +1,7 @@
 ﻿Imports FeneMonLib
 
-Public Class SimulatedMatchState
-    Inherits MatchStateBase
+Public Class SimulatedExhibitionMatchState
+    Inherits ExhibitionMatchStateBase
 
     Public Overrides Function GetBattleState() As BattleStateBase
         Return New SimulatedBattleState

@@ -7,6 +7,7 @@ Public Class SimulatedBattleState
     Private _defenderCycle As Integer
 
     Public Overrides Function PromptChallengerAction() As BattleAction
+        ' todo: add in whatever AI will exist - might need to live on the Fighter object
         If _challengerCycle >= Challenger.Moves.Count Then
             _challengerCycle = 0
         End If
@@ -19,6 +20,7 @@ Public Class SimulatedBattleState
     End Function
 
     Public Overrides Function PromptDefenderAction() As BattleAction
+        ' todo: add in whatever AI will exist - might need to live on the Fighter object
         If _defenderCycle >= Defender.Moves.Count Then
             _defenderCycle = 0
         End If

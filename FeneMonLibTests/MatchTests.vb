@@ -11,7 +11,7 @@
         fighterUnderTest.MonsList.Add(New FeneMon("Bugmon", 10, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
         fighterUnderTest.MonsList.Add(New FeneMon("Icemon", 10, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
 
-        Dim match As New SimulatedMatchState
+        Dim match As New SimulatedExhibitionMatchState
         match.Challenger = fighterUnderTest
 
         ' first mon in the list is the chosen one
@@ -49,7 +49,7 @@
         defender.MonsList.Clear()
         defender.MonsList.Add(defenderMon)
 
-        Dim match As MatchStateBase = New SimulatedMatchState
+        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
@@ -77,7 +77,7 @@
         defender.MonsList.Add(New FeneMon("Watermon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
         defender.MonsList.Add(New FeneMon("Liquidmon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
 
-        Dim match As MatchStateBase = New SimulatedMatchState
+        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
@@ -107,7 +107,7 @@
         defender.MonsList.Add(New FeneMon("Watermon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
         defender.MonsList.Add(New FeneMon("Liquidmon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
 
-        Dim match As MatchStateBase = New SimulatedMatchState
+        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
@@ -128,5 +128,44 @@
 
         AssertHelpers.CollectionsAreEqual(desiredLogs, logger.Messages)
     End Sub
+
+    '<TestMethod> Public Sub SimulatedMatch_WholeWorld_DoesNotBreak()
+
+    '    Dim world As New World
+    '    Dim logger As New TestLogger
+
+    '    ' let each zone be the challenger
+    '    For Each challengerWorldZone As WorldZone In world.WorldZones
+
+    '        ' challenge every other zone
+    '        For Each defenderWorldZone As WorldZone In world.WorldZones.Except({challengerWorldZone})
+
+    '            ' let each fighter in the gymzones fight
+    '            For Each challengerGymZone As GymZone In challengerWorldZone.Gym.GymZones
+
+    '                ' challenge each defending fighter
+    '                For Each defenderGymZone As GymZone In defenderWorldZone.Gym.GymZones
+
+    '                    ' run the match
+    '                    Dim simulatedMatch As MatchStateBase = New SimulatedMatchState
+    '                    simulatedMatch.StartMatch(challengerGymZone.Fighter, defenderGymZone.Fighter, logger)
+
+    '                    ' restore all the mons
+    '                    For Each mon As FeneMon In challengerGymZone.Fighter.MonsList.Union(defenderGymZone.Fighter.MonsList)
+    '                        mon.ResetEffectiveStats()
+    '                        mon.RestoreToFullHealth()
+    '                    Next
+    '                Next
+    '            Next
+    '        Next
+    '    Next
+
+    '    Using writer As New System.IO.StreamWriter("WholeWorldBattleDump.txt")
+    '        For Each log As String In logger.Messages
+    '            writer.WriteLine(log)
+    '        Next
+    '    End Using
+
+    'End Sub
 
 End Class
