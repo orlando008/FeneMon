@@ -7,9 +7,9 @@
         Dim fighterUnderTest As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
 
         fighterUnderTest.MonsList.Clear()
-        fighterUnderTest.MonsList.Add(New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Fire))
-        fighterUnderTest.MonsList.Add(New FeneMon("Bugmon", 10, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
-        fighterUnderTest.MonsList.Add(New FeneMon("Icemon", 10, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
+        fighterUnderTest.MonsList.Add(New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Fire))
+        fighterUnderTest.MonsList.Add(New FeneMon("Bugmon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
+        fighterUnderTest.MonsList.Add(New FeneMon("Icemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
 
         Dim match As New SimulatedExhibitionMatchState
         match.Challenger = fighterUnderTest
@@ -38,8 +38,8 @@
         Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
         Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
 
-        Dim challengerMon As New FeneMon("Firemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defenderMon As New FeneMon("Watermon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challengerMon As New FeneMon("Firemon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defenderMon As New FeneMon("Watermon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -70,12 +70,12 @@
         Dim logger As New TestLogger
 
         challenger.MonsList.Clear()
-        challenger.MonsList.Add(New FeneMon("Firemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
-        challenger.MonsList.Add(New FeneMon("Flamemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Firemon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Flamemon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
 
         defender.MonsList.Clear()
-        defender.MonsList.Add(New FeneMon("Watermon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
-        defender.MonsList.Add(New FeneMon("Liquidmon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Watermon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Liquidmon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
 
         Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
@@ -100,12 +100,12 @@
         Dim logger As New TestLogger
 
         challenger.MonsList.Clear()
-        challenger.MonsList.Add(New FeneMon("Firemon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
-        challenger.MonsList.Add(New FeneMon("Flamemon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Firemon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
+        challenger.MonsList.Add(New FeneMon("Flamemon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire))
 
         defender.MonsList.Clear()
-        defender.MonsList.Add(New FeneMon("Watermon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
-        defender.MonsList.Add(New FeneMon("Liquidmon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Watermon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
+        defender.MonsList.Add(New FeneMon("Liquidmon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice))
 
         Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
         match.StartMatch(challenger, defender, logger)

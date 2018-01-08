@@ -5,7 +5,7 @@ Imports FeneMonLib
 <TestClass()> Public Class BattleTests
 
     <TestMethod()> Public Sub SimulatedBattleState_ChoosesFirstMove()
-        Dim challenger As New FeneMon("Glassmon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Attack", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Attack2", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1)}, Enumerations.ElementEnum.Bug)
+        Dim challenger As New FeneMon("Glassmon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Attack", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Attack2", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1)}, Enumerations.ElementEnum.Bug)
         Dim battle As BattleStateBase = New SimulatedBattleState()
         battle.Challenger = challenger
         Dim action As BattleAction = battle.PromptChallengerAction()
@@ -13,8 +13,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub SimulatedBattleState_IdenticalMonsChallengerWins()
-        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -32,8 +32,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub SimulatedBattleState_SameMonSpeed_DifferentMoveSpeed_FasterMoveFirst()
-        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 2), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 2), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -51,8 +51,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub SimulatedBattleState_DifferentMonSpeed_SameMoveSpeed_FasterMoveFirst()
-        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 10, 10, 11, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 10, 10, 11, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -70,8 +70,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub AttackHigherThanDefense_MoreDamage()
-        Dim challenger As New FeneMon("Firemon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 20, 10, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -89,8 +89,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub DefenseHigherThanAttack_LessDamage()
-        Dim challenger As New FeneMon("Firemon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 10, 20, 10, 10, 10, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 10, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 
@@ -110,8 +110,8 @@ Imports FeneMonLib
     End Sub
 
     <TestMethod()> Public Sub SpecialMove_SpecialStatsDamage()
-        Dim challenger As New FeneMon("Firemon", 10, 10, 10, 10, 10, 20, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 0, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
-        Dim defender As New FeneMon("Watermon", 10, 10, 10, 10, 10, 20, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 0, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
+        Dim challenger As New FeneMon("Firemon", 1, 10, 10, 10, 10, 20, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 0, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Fire)
+        Dim defender As New FeneMon("Watermon", 1, 10, 10, 10, 10, 20, {New FeneMonMove("Physical Fire", Enumerations.ElementEnum.Fire, 0, Enumerations.DamageTypeEnum.Physical, 1), New FeneMonMove("Special Ice", Enumerations.ElementEnum.Ice, 10, Enumerations.DamageTypeEnum.Special, 2)}, Enumerations.ElementEnum.Ice)
 
         Dim logger As New TestLogger
 

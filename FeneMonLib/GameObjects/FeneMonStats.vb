@@ -1,14 +1,14 @@
 ﻿Public Class FeneMonStats
 
-    Private _health As Integer
+    Private _vitality As Integer
     Private _attack As Integer
     Private _defense As Integer
     Private _speed As Integer
     Private _specialAttack As Integer
     Private _specialDefense As Integer
 
-    Public Sub New(health As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer)
-        Me.Health = health
+    Public Sub New(vitality As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer)
+        Me.Vitality = vitality
         Me.Attack = attack
         Me.Defense = defense
         Me.Speed = speed
@@ -16,12 +16,12 @@
         Me.SpecialDefense = specialDefense
     End Sub
 
-    Public Property Health As Integer
+    Public Property Vitality As Integer
         Get
-            Return _health
+            Return _vitality
         End Get
         Set(value As Integer)
-            _health = value
+            _vitality = value
         End Set
     End Property
 
@@ -72,7 +72,7 @@
 
     Public ReadOnly Property PowerLevel As Integer
         Get
-            Return Health + Attack + SpecialAttack + Speed + Defense + SpecialDefense
+            Return Vitality + Attack + SpecialAttack + Speed + Defense + SpecialDefense
         End Get
     End Property
 End Class

@@ -13,10 +13,10 @@ Public Class FeneMon
 
     Private _element As Enumerations.ElementEnum
 
-    Public Sub New(name As String, maxHealth As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove), element As Enumerations.ElementEnum)
+    Public Sub New(name As String, vitality As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove), element As Enumerations.ElementEnum)
         Me.Name = name
-        _baseStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
-        _effectiveStats = New FeneMonStats(maxHealth, attack, defense, speed, specialAttack, specialDefense)
+        _baseStats = New FeneMonStats(vitality, attack, defense, speed, specialAttack, specialDefense)
+        _effectiveStats = New FeneMonStats(vitality, attack, defense, speed, specialAttack, specialDefense)
         _moves = moves
         Me.Element = element
         ResetEffectiveStats()
@@ -36,7 +36,7 @@ Public Class FeneMon
     <JsonProperty("MaxHealth")>
     Public ReadOnly Property MaxHealth As Integer
         Get
-            Return _baseStats.Health
+            Return 5 * (2 * _baseStats.Vitality)
         End Get
     End Property
 
@@ -78,13 +78,13 @@ Public Class FeneMon
     <JsonProperty("CurrentHealth")>
     Public Property CurrentHealth As Integer
         Get
-            Return _effectiveStats.Health
+            Return _effectiveStats.Vitality
         End Get
         Set(value As Integer)
             ' health should never go below 0
             If value < 0 Then value = 0
 
-            _effectiveStats.Health = value
+            _effectiveStats.Vitality = value
         End Set
     End Property
 
