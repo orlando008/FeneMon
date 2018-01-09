@@ -1,6 +1,6 @@
 ﻿Imports FeneMonLib
 
-Public MustInherit Class ExhibitionMatchStateBase
+Public Class ExhibitionMatchState
 
     Private _challenger As Fighter
     Private _defender As Fighter
@@ -47,8 +47,16 @@ Public MustInherit Class ExhibitionMatchStateBase
             battleState.StartBattle(currentChallengerMon, currentDefenderMon, _logger)
 
             ' battle finished, prompt for new Mons
-            currentChallengerMon = PromptChallengerNextMon()
-            currentDefenderMon = PromptDefenderNextMon()
+            ' prompt the fainted one first
+            If currentChallengerMon.CurrentHealth = 0 Then
+                ' challenger fainted, get a new challenger first
+                currentChallengerMon = PromptChallengerNextMon(currentDefenderMon)
+                currentDefenderMon = PromptDefenderNextMon(currentChallengerMon)
+            Else
+                ' defender fainted, get a new defender first
+                currentDefenderMon = PromptDefenderNextMon(currentChallengerMon)
+                currentChallengerMon = PromptChallengerNextMon(currentDefenderMon)
+            End If
 
             ' one (or both) fighters have no more mons, the match is over
             If currentChallengerMon Is Nothing OrElse currentDefenderMon Is Nothing Then
@@ -57,9 +65,16 @@ Public MustInherit Class ExhibitionMatchStateBase
         End While
     End Sub
 
-    Public MustOverride Function GetBattleState() As BattleStateBase
+    Public Function GetBattleState() As BattleStateBase
+        Return New SimulatedBattleState
+    End Function
 
-    Public MustOverride Function PromptChallengerNextMon() As FeneMon
-    Public MustOverride Function PromptDefenderNextMon() As FeneMon
+    Public Function PromptChallengerNextMon(currentDefenderMon As FeneMon) As FeneMon
+        Return Challenger.PromptNextMon(currentDefenderMon)
+    End Function
+
+    Public Function PromptDefenderNextMon(currentChallengerMon As FeneMon) As FeneMon
+        Return Defender.PromptNextMon(currentChallengerMon)
+    End Function
 
 End Class

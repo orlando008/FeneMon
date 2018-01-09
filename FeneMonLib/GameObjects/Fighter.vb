@@ -110,6 +110,17 @@ Public Class Fighter
     End Property
 #End Region
 
+#Region " Public Methods "
+
+    Public Function PromptNextMon(opponentMon As FeneMon) As FeneMon
+        ' todo: ai logic / strategies
+
+        ' assume the next mon in line is good enough
+        Return MonsList.FirstOrDefault(Function(m) m.CurrentHealth > 0)
+    End Function
+
+#End Region
+
 #Region "Private Methods"
 
     Private Function ChoseFeneMove(ByVal enemyMon As FeneMon) As FeneMonMove

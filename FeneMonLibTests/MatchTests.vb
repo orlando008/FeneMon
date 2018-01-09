@@ -11,26 +11,26 @@
         fighterUnderTest.MonsList.Add(New FeneMon("Bugmon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
         fighterUnderTest.MonsList.Add(New FeneMon("Icemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
 
-        Dim match As New SimulatedExhibitionMatchState
+        Dim match As New ExhibitionMatchState
         match.Challenger = fighterUnderTest
 
         ' first mon in the list is the chosen one
-        Assert.AreSame(fighterUnderTest.MonsList.First, match.PromptChallengerNextMon)
+        Assert.AreSame(fighterUnderTest.MonsList.First, match.PromptChallengerNextMon(Default_Firemon))
 
         fighterUnderTest.MonsList.First.CurrentHealth = 0
 
         ' next mon is second
-        Assert.AreSame(fighterUnderTest.MonsList.Skip(1).First, match.PromptChallengerNextMon)
+        Assert.AreSame(fighterUnderTest.MonsList.Skip(1).First, match.PromptChallengerNextMon(Default_Firemon))
 
         fighterUnderTest.MonsList.Skip(1).First.CurrentHealth = 0
 
         ' last mon is third
-        Assert.AreSame(fighterUnderTest.MonsList.Last, match.PromptChallengerNextMon)
+        Assert.AreSame(fighterUnderTest.MonsList.Last, match.PromptChallengerNextMon(Default_Firemon))
 
         fighterUnderTest.MonsList.Last.CurrentHealth = 0
 
         ' no mons left
-        Assert.IsNull(match.PromptChallengerNextMon)
+        Assert.IsNull(match.PromptChallengerNextMon(Default_Firemon))
     End Sub
 
     <TestMethod> Public Sub SimulatedMatch_FightersDone_On0HP()
@@ -52,7 +52,7 @@
         defender.MonsList.Clear()
         defender.MonsList.Add(defenderMon)
 
-        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
+        Dim match As New ExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
@@ -86,7 +86,7 @@
         defender.MonsList(0).CurrentAttack = 20
         defender.MonsList(1).CurrentAttack = 20
 
-        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
+        Dim match As New ExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)
@@ -122,7 +122,7 @@
         defender.MonsList(0).CurrentDefense = 20
         defender.MonsList(1).CurrentDefense = 20
 
-        Dim match As ExhibitionMatchStateBase = New SimulatedExhibitionMatchState
+        Dim match As New ExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.MonsList.First.CurrentHealth)

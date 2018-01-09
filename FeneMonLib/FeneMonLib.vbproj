@@ -70,8 +70,7 @@
     <Compile Include="GameObjects\FeneMonMove.vb" />
     <Compile Include="GameObjects\FeneMonStats.vb" />
     <Compile Include="GameObjects\BattleAction.vb" />
-    <Compile Include="GameObjects\ExhibitionMatchStateBase.vb" />
-    <Compile Include="GameObjects\SimulatedExhibitionMatchState.vb" />
+    <Compile Include="GameObjects\ExhibitionMatchState.vb" />
     <Compile Include="Methods\BattleMethods.vb" />
     <Compile Include="GameObjects\FeneMon.vb" />
     <Compile Include="GameObjects\Fighter.vb" />
