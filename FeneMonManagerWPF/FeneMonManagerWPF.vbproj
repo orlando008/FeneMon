@@ -69,6 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\FeneMonViewerControl.xaml.vb">
+      <DependentUpon>FeneMonViewerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\GymControl.xaml.vb">
       <DependentUpon>GymControl.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
     <Compile Include="ViewModels\NewGameMenuViewModel.vb" />
     <Compile Include="ViewModels\WorldMapViewModel.vb" />
     <Compile Include="ViewModels\WorldMapZoneViewModel.vb" />
+    <Page Include="Controls\FeneMonViewerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\GymControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

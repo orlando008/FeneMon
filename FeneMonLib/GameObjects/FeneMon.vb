@@ -3,6 +3,7 @@ Imports Newtonsoft.Json
 
 <DebuggerDisplay("{Me.Name}")>
 Public Class FeneMon
+    Inherits ViewModelBase
 
     Private _name As String
 
@@ -12,6 +13,8 @@ Public Class FeneMon
     Private _moves As IList(Of FeneMonMove)
 
     Private _element As Enumerations.ElementEnum
+
+    Private _viewingDetails As Boolean
 
     Public Sub New(name As String, vitality As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove), element As Enumerations.ElementEnum)
         Me.Name = name
@@ -165,6 +168,16 @@ Public Class FeneMon
         Get
             Return [Enum].GetName(GetType(Enumerations.ElementEnum), Me.Element)
         End Get
+    End Property
+
+    Public Property ViewingDetails As Boolean
+        Get
+            Return _viewingDetails
+        End Get
+        Set(value As Boolean)
+            _viewingDetails = value
+            OnPropertyChanged(NameOf(ViewingDetails))
+        End Set
     End Property
 
     Public Sub ResetEffectiveStats()
