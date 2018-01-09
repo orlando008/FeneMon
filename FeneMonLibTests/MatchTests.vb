@@ -4,12 +4,11 @@
 
     <TestMethod> Public Sub SimulatedMatch_ChooseMons_InventoryOrder()
 
-        Dim fighterUnderTest As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim fighterUnderTest As Fighter = Default_Fighter()
 
-        fighterUnderTest.MonsList.Clear()
-        fighterUnderTest.MonsList.Add(New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Fire))
-        fighterUnderTest.MonsList.Add(New FeneMon("Bugmon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
-        fighterUnderTest.MonsList.Add(New FeneMon("Icemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
+        fighterUnderTest.AddMon(New FeneMon("Firemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Fire))
+        fighterUnderTest.AddMon(New FeneMon("Bugmon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Bug))
+        fighterUnderTest.AddMon(New FeneMon("Icemon", 1, 10, 10, 10, 10, 10, {}, Enumerations.ElementEnum.Ice))
 
         Dim match As New ExhibitionMatchState
         match.Challenger = fighterUnderTest
@@ -35,8 +34,8 @@
 
     <TestMethod> Public Sub SimulatedMatch_FightersDone_On0HP()
 
-        Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
-        Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim challenger As Fighter = Default_Fighter()
+        Dim defender As Fighter = Default_Fighter()
 
         Dim challengerMon As FeneMon = Default_Firemon()
         Dim defenderMon As FeneMon = Default_Watermon()
@@ -46,11 +45,8 @@
 
         Dim logger As New TestLogger
 
-        challenger.MonsList.Clear()
-        challenger.MonsList.Add(challengerMon)
-
-        defender.MonsList.Clear()
-        defender.MonsList.Add(defenderMon)
+        challenger.AddMon(challengerMon)
+        defender.AddMon(defenderMon)
 
         Dim match As New ExhibitionMatchState
         match.StartMatch(challenger, defender, logger)
@@ -67,21 +63,19 @@
 
     <TestMethod> Public Sub SimulatedMatch_FightersCycle_On0HP()
 
-        Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
-        Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim challenger As Fighter = Default_Fighter()
+        Dim defender As Fighter = Default_Fighter()
 
         Dim logger As New TestLogger
 
-        challenger.MonsList.Clear()
-        challenger.MonsList.Add(Default_Firemon)
-        challenger.MonsList.Add(Default_Firemon)
+        challenger.AddMon(Default_Firemon)
+        challenger.AddMon(Default_Firemon)
         challenger.MonsList.Last.Name = "Flamemon"
         challenger.MonsList(0).CurrentAttack = 20
         challenger.MonsList(1).CurrentAttack = 20
 
-        defender.MonsList.Clear()
-        defender.MonsList.Add(Default_Watermon)
-        defender.MonsList.Add(Default_Watermon)
+        defender.AddMon(Default_Watermon)
+        defender.AddMon(Default_Watermon)
         defender.MonsList.Last.Name = "Liquidmon"
         defender.MonsList(0).CurrentAttack = 20
         defender.MonsList(1).CurrentAttack = 20
@@ -103,21 +97,19 @@
 
     <TestMethod> Public Sub SimulatedMatch_FightersCycle_On0HP_Challenger()
 
-        Dim challenger As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
-        Dim defender As Fighter = (New World).WorldZones.First.Gym.GymZones.First.Fighter
+        Dim challenger As Fighter = Default_Fighter()
+        Dim defender As Fighter = Default_Fighter()
 
         Dim logger As New TestLogger
 
-        challenger.MonsList.Clear()
-        challenger.MonsList.Add(Default_Firemon)
-        challenger.MonsList.Add(Default_Firemon)
+        challenger.AddMon(Default_Firemon)
+        challenger.AddMon(Default_Firemon)
         challenger.MonsList.Last.Name = "Flamemon"
         challenger.MonsList(0).CurrentDefense = 20
         challenger.MonsList(1).CurrentDefense = 20
 
-        defender.MonsList.Clear()
-        defender.MonsList.Add(Default_Watermon)
-        defender.MonsList.Add(Default_Watermon)
+        defender.AddMon(Default_Watermon)
+        defender.AddMon(Default_Watermon)
         defender.MonsList.Last.Name = "Liquidmon"
         defender.MonsList(0).CurrentDefense = 20
         defender.MonsList(1).CurrentDefense = 20

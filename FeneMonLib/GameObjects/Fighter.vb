@@ -29,6 +29,7 @@ Public Class Fighter
         'Add a random mon to the Fighters list of Mons to start with
         _monsList.Add(GetRandomMon(1))
         _monsList.Add(GetRandomMon(1))
+        SetAllMonOwners()
     End Sub
 
     ''' <summary>
@@ -47,6 +48,7 @@ Public Class Fighter
         _parentGymZone = parentGymZone
         _personality = personality
         _monsList = monsList
+        SetAllMonOwners()
     End Sub
 
 #Region "Public Properties"
@@ -119,6 +121,18 @@ Public Class Fighter
         Return MonsList.FirstOrDefault(Function(m) m.CurrentHealth > 0)
     End Function
 
+    Public Function PromptBattleAction(myMon As FeneMon, opponentMon As FeneMon, roundNumber As Integer)
+        ' todo: ai logic / strategies
+
+        ' cycle through different moves for now
+        Return New BattleAction(myMon, opponentMon, myMon.Moves(roundNumber Mod myMon.Moves.Count))
+    End Function
+
+    Public Sub AddMon(mon As FeneMon)
+        MonsList.Add(mon)
+        SetMonOwner(mon)
+    End Sub
+
 #End Region
 
 #Region "Private Methods"
@@ -133,6 +147,16 @@ Public Class Fighter
 
         Return chosenMove
     End Function
+
+    Private Sub SetAllMonOwners()
+        For Each mon As FeneMon In MonsList
+            SetMonOwner(mon)
+        Next
+    End Sub
+
+    Private Sub SetMonOwner(mon As FeneMon)
+        mon.Owner = Me
+    End Sub
 
 #End Region
 

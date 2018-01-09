@@ -1,4 +1,4 @@
-﻿Public MustInherit Class BattleStateBase
+﻿Public Class BattleState
 
     Private _challenger As FeneMon
     Private _defender As FeneMon
@@ -36,11 +36,13 @@
 
     Private Sub BattleLoop()
         ' keep looping until we have a winner or until someone resigns
+        Dim roundNumber As Integer = 0
+
         While True
 
             ' todo: prompts could probably simultaneous
-            Dim challengerAction As BattleAction = PromptChallengerAction()
-            Dim defenderAction As BattleAction = PromptDefenderAction()
+            Dim challengerAction As BattleAction = PromptChallengerAction(roundNumber)
+            Dim defenderAction As BattleAction = PromptDefenderAction(roundNumber)
 
             ' figure out who goes first
             Dim orderedActions As IList(Of BattleAction) = BattleMethods.ResolveActionOrder({challengerAction, defenderAction})
@@ -56,11 +58,17 @@
                 End If
             Next
 
+            roundNumber += 1
+
         End While
     End Sub
 
-    Public MustOverride Function PromptChallengerAction() As BattleAction
+    Public Function PromptChallengerAction(roundNumber As Integer) As BattleAction
+        Return Challenger.Owner.PromptBattleAction(Challenger, Defender, roundNumber)
+    End Function
 
-    Public MustOverride Function PromptDefenderAction() As BattleAction
+    Public Function PromptDefenderAction(roundNumber As Integer) As BattleAction
+        Return Defender.Owner.PromptBattleAction(Defender, Challenger, roundNumber)
+    End Function
 
 End Class

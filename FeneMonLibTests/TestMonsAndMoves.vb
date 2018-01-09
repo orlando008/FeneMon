@@ -2,6 +2,17 @@
 
 Module TestMonsAndMoves
 
+#Region " Test Fighters "
+
+    Function Default_Fighter() As Fighter
+        Dim world As New World
+        Dim fighter As Fighter = world.WorldZones.First.Gym.GymZones.First.Fighter
+        fighter.MonsList.Clear()
+        Return fighter
+    End Function
+
+#End Region
+
 #Region " Test Mons "
 
     Function Default_Firemon() As FeneMon

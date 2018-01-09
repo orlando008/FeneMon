@@ -6,19 +6,22 @@ Imports FeneMonLib
 
     <TestMethod()> Public Sub SimulatedBattleState_ChoosesFirstMove()
         Dim challenger As FeneMon = Default_Firemon()
-        Dim battle As BattleStateBase = New SimulatedBattleState()
+        challenger.Owner = Default_Fighter()
+        Dim battle As New BattleState()
         battle.Challenger = challenger
-        Dim action As BattleAction = battle.PromptChallengerAction()
+        Dim action As BattleAction = battle.PromptChallengerAction(0)
         Assert.AreEqual(challenger.Moves.First, action.Move)
     End Sub
 
     <TestMethod()> Public Sub SimulatedBattleState_IdenticalMonsChallengerWins()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.CurrentHealth)
@@ -34,12 +37,14 @@ Imports FeneMonLib
     <TestMethod()> Public Sub SimulatedBattleState_SameMonSpeed_DifferentMovePriority_FasterMoveFirst()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         defender.Moves(0).Priority = 1
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, challenger.CurrentHealth)
@@ -55,12 +60,14 @@ Imports FeneMonLib
     <TestMethod()> Public Sub SimulatedBattleState_DifferentMonSpeed_SameMovePriority_FasterMoveFirst()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         defender.CurrentSpeed = 20
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, challenger.CurrentHealth)
@@ -76,13 +83,15 @@ Imports FeneMonLib
     <TestMethod()> Public Sub AttackHigherThanDefense_MoreDamage()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         challenger.CurrentAttack = 20
         defender.CurrentAttack = 20
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.CurrentHealth)
@@ -98,13 +107,15 @@ Imports FeneMonLib
     <TestMethod()> Public Sub DefenseHigherThanAttack_LessDamage()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         challenger.CurrentDefense = 20
         defender.CurrentDefense = 20
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.CurrentHealth)
@@ -122,6 +133,8 @@ Imports FeneMonLib
     <TestMethod()> Public Sub SpecialMove_SpecialStatsDamage()
         Dim challenger As FeneMon = Default_Firemon()
         Dim defender As FeneMon = Default_Watermon()
+        challenger.Owner = Default_Fighter()
+        defender.Owner = Default_Fighter()
 
         challenger.Moves(0).Power = 0
         challenger.CurrentSpecialDefense = 20
@@ -130,7 +143,7 @@ Imports FeneMonLib
 
         Dim logger As New TestLogger
 
-        Dim battle As BattleStateBase = New SimulatedBattleState
+        Dim battle As New BattleState
         battle.StartBattle(challenger, defender, logger)
 
         Assert.AreEqual(0, defender.CurrentHealth)

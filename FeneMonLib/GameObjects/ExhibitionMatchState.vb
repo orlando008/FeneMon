@@ -43,7 +43,7 @@ Public Class ExhibitionMatchState
 
         ' keep looping until we have a winner or until someone resigns
         While True
-            Dim battleState As BattleStateBase = GetBattleState()
+            Dim battleState As BattleState = GetBattleState()
             battleState.StartBattle(currentChallengerMon, currentDefenderMon, _logger)
 
             ' battle finished, prompt for new Mons
@@ -65,8 +65,8 @@ Public Class ExhibitionMatchState
         End While
     End Sub
 
-    Public Function GetBattleState() As BattleStateBase
-        Return New SimulatedBattleState
+    Public Function GetBattleState() As BattleState
+        Return New BattleState
     End Function
 
     Public Function PromptChallengerNextMon(currentDefenderMon As FeneMon) As FeneMon

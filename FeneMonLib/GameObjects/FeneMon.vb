@@ -16,6 +16,8 @@ Public Class FeneMon
 
     Private _viewingDetails As Boolean
 
+    Private _owner As Fighter
+
     Public Sub New(name As String, vitality As Integer, attack As Integer, defense As Integer, speed As Integer, specialAttack As Integer, specialDefense As Integer, moves As IEnumerable(Of FeneMonMove), element As Enumerations.ElementEnum)
         Me.Name = name
         _baseStats = New FeneMonStats(vitality, attack, defense, speed, specialAttack, specialDefense)
@@ -177,6 +179,15 @@ Public Class FeneMon
         Set(value As Boolean)
             _viewingDetails = value
             OnPropertyChanged(NameOf(ViewingDetails))
+        End Set
+    End Property
+
+    Public Property Owner As Fighter
+        Get
+            Return _owner
+        End Get
+        Set(value As Fighter)
+            _owner = value
         End Set
     End Property
 
