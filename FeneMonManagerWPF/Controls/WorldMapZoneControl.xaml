@@ -6,20 +6,16 @@
              xmlns:local="clr-namespace:FeneMonManagerWPF"
              mc:Ignorable="d"
              >
-    <Border BorderThickness="1" BorderBrush="Black">
-        <Border.Background>
+    <Border BorderThickness="1" BorderBrush="Black" Background="{Binding AffinityBackgroundColor}">
+        <!--<Border.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FFB1FFFF" Offset="0.574"/>
+                <GradientStop Color="{Binding AffinityColor}" Offset="0.574"/>
                 <GradientStop Color="White" Offset="1"/>
             </LinearGradientBrush>
-        </Border.Background>
+        </Border.Background>-->
         <DockPanel LastChildFill="True">
-            <Label>Type</Label>
-            <Label Content="{Binding Affinity}"></Label>
-            <Label>Number Of Zones</Label>
-            <Label Content="{Binding Gym.GymZones.Count}"></Label>
-            <Label>Player Owned</Label>
-            <Label Content="{Binding IsPlayerHome}"></Label>
+
+            <Label DockPanel.Dock="Top" Content="{Binding Affinity}" Foreground="{Binding AffinityForegroundColor}"></Label>
             <Button x:Name="btnViewGym">View Gym</Button>
         </DockPanel>
     </Border>

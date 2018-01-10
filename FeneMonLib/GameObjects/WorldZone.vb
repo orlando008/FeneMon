@@ -1,4 +1,5 @@
-﻿Imports FeneMonLib
+﻿Imports System.Windows.Media
+Imports FeneMonLib
 
 Public Class WorldZone
     Inherits ViewModelBase
@@ -46,6 +47,20 @@ Public Class WorldZone
         Set(value As Gym)
             _gym = value
         End Set
+    End Property
+
+    <DependsUpon(NameOf(Affinity))>
+    Public ReadOnly Property AffinityBackgroundColor As SolidColorBrush
+        Get
+            Return ColorFormatMethods.GetAffinityBackgroundColor(Affinity)
+        End Get
+    End Property
+
+    <DependsUpon(NameOf(Affinity))>
+    Public ReadOnly Property AffinityForegroundColor As SolidColorBrush
+        Get
+            Return ColorFormatMethods.GetAffinityForegroundColor(Affinity)
+        End Get
     End Property
 
     Public Property Affinity As Enumerations.ElementEnum

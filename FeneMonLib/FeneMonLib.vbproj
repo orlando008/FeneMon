@@ -76,6 +76,7 @@
     <Compile Include="GameObjects\Fighter.vb" />
     <Compile Include="GameObjects\Gym.vb" />
     <Compile Include="GameObjects\BattleState.vb" />
+    <Compile Include="Methods\ColorFormatMethods.vb" />
     <Compile Include="Methods\JsonParsingMethods.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
