@@ -19,6 +19,7 @@
         <Image x:Key="homeImage" Source="/Images/home.png"></Image>
         <Image x:Key="chartImage" Source="/Images/chart.png"></Image>
         <Image x:Key="rosterImage" Source="/Images/roster.png"></Image>
+        <Image x:Key="playImage" Source="/Images/play.png"></Image>
         <DataTemplate DataType="{x:Type local:MainMenuViewModel}">
             <local:MainMenu></local:MainMenu>
         </DataTemplate>
@@ -45,7 +46,9 @@
                 <Label Foreground="White">Date:</Label>
                 <Label Foreground="White" Content="{Binding CurrentWorld.CurrentDate}"></Label>
             </StackPanel>
-            
+
+            <Button ToolTip="Advance" Content="{StaticResource playImage}" Command="{Binding MainMenuVM.AdvanceDayCommand}" Width="32" Height="32"></Button>
+
         </StackPanel>
         <ContentControl x:Name="ContentArea" Content="{Binding CurrentPageViewModel}"></ContentControl>
     </DockPanel>

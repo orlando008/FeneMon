@@ -214,5 +214,8 @@
     <Resource Include="Images\chart.png" />
     <Resource Include="Images\roster.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\play.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

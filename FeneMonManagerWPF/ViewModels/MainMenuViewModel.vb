@@ -100,4 +100,26 @@ Public Class MainMenuViewModel
         RaiseNavigation(Enumerations.PageEnum.Gym)
     End Sub
 #End Region
+
+#Region "Advance DayCommand"
+
+    Private _AdvanceDayCommand As RelayCommand
+
+    Public ReadOnly Property AdvanceDayCommand() As ICommand
+        Get
+            If _AdvanceDayCommand Is Nothing Then
+                _AdvanceDayCommand = New RelayCommand(New Action(Of Object)(AddressOf AdvanceDay), New Predicate(Of Object)(AddressOf CanAdvanceDay))
+            End If
+            Return _AdvanceDayCommand
+        End Get
+    End Property
+
+    Private Function CanAdvanceDay() As Boolean
+        Return True
+    End Function
+
+    Private Sub AdvanceDay()
+        _mainVM.CurrentWorldViewModel.WorldMap.AdvanceDay()
+    End Sub
+#End Region
 End Class

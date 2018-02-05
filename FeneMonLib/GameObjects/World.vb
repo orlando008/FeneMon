@@ -33,6 +33,10 @@ Public Class World
         Next
     End Sub
 
+    Public Sub AdvanceDay()
+        CurrentDate = CurrentDate.AddDays(1)
+    End Sub
+
 
 #Region "Public Properties"
 
@@ -55,6 +59,7 @@ Public Class World
         End Get
         Set(value As Date)
             _currentDate = value
+            OnPropertyChanged(NameOf(CurrentDate))
         End Set
     End Property
 
